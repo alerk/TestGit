@@ -1,18 +1,18 @@
 /*
- * ResultServerThread.cpp
+ * FireDetectorThread.cpp
  *
  *  Created on: May 9, 2015
  *      Author: quyen
  */
 
-#include "ResultServerThread.h"
+#include "FireThread.h"
 
-ResultServerThread::ResultServerThread() {
+FireThread::FireThread() {
 	// TODO Auto-generated constructor stub
 
 }
 
-ResultServerThread::~ResultServerThread() {
+FireThread::~FireThread() {
 	// TODO Auto-generated destructor stub
 }
 

@@ -8,10 +8,10 @@
 #ifndef SOURCE_FIREDETECTORTHREAD_H_
 #define SOURCE_FIREDETECTORTHREAD_H_
 
-class FireDetectorThread {
+class FireThread {
 public:
-	FireDetectorThread();
-	virtual ~FireDetectorThread();
+	FireThread();
+	virtual ~FireThread();
 };
 
 #endif /* SOURCE_FIREDETECTORTHREAD_H_ */
