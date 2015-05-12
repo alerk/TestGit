@@ -15,8 +15,15 @@ public:
 	virtual ~MainThread();
 
 private:
+	pthread_t 		mainThread;
+	pthread_mutex_t mainMutex;
+	pthread_cond_t 	mainCond;
 
 public:
+	void startMainThread();
+	void initMainThread();
+	void joinMainThread();
+
 
 };
 
