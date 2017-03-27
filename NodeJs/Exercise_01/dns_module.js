@@ -1,7 +1,7 @@
 
 //dns_module.js
 module.exports = {
-exampleOSModule: function() {
+exampleDNSModule: function() {
 console.log("From dns_module.js");
 }
 };

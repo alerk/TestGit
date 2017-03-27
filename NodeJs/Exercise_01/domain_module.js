@@ -1,7 +1,7 @@
 
 //domain_module.js
 module.exports = {
-exampleOSModule: function() {
+exampleDomainModule: function() {
 console.log("From domain_module.js");
 }
 };

@@ -1,7 +1,7 @@
 
 //net_module.js
 module.exports = {
-exampleOSModule: function() {
+exampleNetModule: function() {
 console.log("From net_module.js");
 }
 };
