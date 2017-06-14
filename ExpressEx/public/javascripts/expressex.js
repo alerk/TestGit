@@ -1,4 +1,5 @@
 //expressex.js
+// #Angular
 var app = angular.module('ExpressEx', ['ngResource', 'ngRoute']);
 
 app.config(['$routeProvider', function($routeProvider){
@@ -55,6 +56,7 @@ app.controller('EditVideoCtrl', ['$scope', '$resource', '$location', '$routePara
         }); 
 
         $scope._save = function() {
+            console.log("EditVideoCtrl._save function is called");
             Videos.update($scope.video, function() {
                 $location.path('/');
             }); // This function will be called when user pressed the "Save" button
@@ -69,6 +71,7 @@ app.controller('DelVideoCtrl', ['$scope', '$resource', '$location', '$routeParam
         });
 
         $scope._del = function() {
+            console.log("_del function is called");
             Videos.delete({ id: $routeParams.id }, function(video) {
                 $location.path('/');
             });//Videos.save function
