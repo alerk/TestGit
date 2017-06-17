@@ -42,39 +42,31 @@ router.get('/:id', function(req, res){
 });
 
 //Put video info - To update info of 1 video
-router.put('/:id', function(res, req) {
+router.put('/:id', function(req, res) {
     var collection = db.get('videos');
-    console.log("router.put is called");
-    collection.findById(req.params.id, function(error, video) {
-        console.log("findById");
-        if(error) {
-            return res.send(500, error);
+    var updateValue = {title: req.body.title, description: req.body.description};
+    
+    console.log("router.put is called, id: " + req.params.id);
+
+    collection.update({ _id: req.params.id}, /*Params of the put*/ updateValue,  function (err, video) {
+        console.log("update");
+        if (err) {
+            return res.send(500, err);
         }
-        if (!video) {
-            return res.send(404);
-        }
-        var updateValue = {title: req.body.title, description: req.body.description};
-        collection.updateById(req.params.id, /*Params of the put*/ updateValue,  function (err, video) {
-            console.log("updateById");
-            if (err) {
-                return res.send(500, err);
-            }
-            res.json(video);
-        });
+        res.json(video);
     });
 });
 
 // Delete a video
-router.delete('/:id', function(res, req) {
+router.delete('/:id', function(req, res) {
     var collection = db.get('videos');
-
-    collection.remove({ _id: req.params.id }, 
-        function (err, video) {
-            console.log("router.delete is called");
-            if (err) {
-                throw err;
-            }
-            res.json(video);
+    console.log("router.delete is called, id: " + req.params.id);
+    collection.remove({ _id: req.params.id }, function (err, video) {
+        console.log("collection.remove is called");
+        if (err) {
+            return res.send(500, err);
+        }
+        res.json(video);
     });
 });
 
