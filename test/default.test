@@ -1,0 +1,13 @@
+GET http://localhost:8088/signalstate?startPosition=%d&startTimeStamp=%d&maxCount=1000&fullData
+GET http://localhost:8088/signalstate?startPosition=%d&startTimeStamp=%d&maxCount=1000
+GET http://localhost:8088/detectorreading?startPosition=%d&startTimeStamp=%d&maxCount=1000
+GET http://localhost:8088/status
+GET http://localhost:8088/operationalstate
+GET http://localhost:8088/operationalstate?startPosition=%d&startTimeStamp=%d&maxCount=1000
+GET http://localhost:8088/message?startPosition=%d&startTimeStamp=%d&maxCount=1000
+HEAD http://localhost:8088/allok
+GET http://localhost:8088/version
+GET http://localhost:8088/configuration
+PUT http://localhost:8088/switchcommand?nodeId=0&requestType=SIGNAL_TIMING_PLAN&signalTimingPlanId=2
+#PUT http://localhost:8088/switchcommand?nodeId=0&requestType=AMBER_FLASHING&signalTimingPlanId=1
+#PUT http://localhost:8088/switchcommand?nodeId=0&requestType=DARK&signalTimingPlanId=1
