@@ -22,7 +22,19 @@ get:
 put:
 	$(CXX) httpput.c -o $@ $(CXXFLAGS)
 
-all: test_mk sample
+http-server:
+	$(CXX) http-server.c -o $@ $(CXXFLAGS)
+
+http-client:
+	$(CXX) http-client-1.c -o $@ $(CXXFLAGS)
+
+https-client:
+	$(CXX) https-client.c -o $@ $(CXXFLAGS)
+
+proxy-server:
+	$(CXX) proxy-server.c -o $@ $(CXXFLAGS)
+
+all: test_mk sample http-server http-client
 	echo Make all
 
 clean:
