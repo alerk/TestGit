@@ -12,6 +12,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include <stdbool.h>
 
 #include <sys/types.h>
 #include <sys/stat.h>
@@ -34,6 +35,7 @@
 #include <dirent.h>
 #endif
 
+#include <evhttp.h>
 #include <event2/event.h>
 #include <event2/http.h>
 #include <event2/buffer.h>
@@ -67,88 +69,101 @@
 
 char uri_root[512];
 
-static const struct table_entry {
-	const char *extension;
-	const char *content_type;
-} content_type_table[] = {
-	{ "txt", "text/plain" },
-	{ "c", "text/plain" },
-	{ "h", "text/plain" },
-	{ "html", "text/html" },
-	{ "htm", "text/htm" },
-	{ "css", "text/css" },
-	{ "gif", "image/gif" },
-	{ "jpg", "image/jpeg" },
-	{ "jpeg", "image/jpeg" },
-	{ "png", "image/png" },
-	{ "pdf", "application/pdf" },
-	{ "ps", "application/postscript" },
-	{ NULL, NULL },
-};
+typedef struct {
+    struct evhttp_connection *conn;
+    struct evhttp_request *req;
+    struct evhttp_request *client;
+    int response_code;
+    struct evbuffer *response_buffer;
+    bool finished;
+} http_client;
 
-/* Try to guess a good content-type for 'path' */
-static const char *
-guess_content_type(const char *path)
-{
-	const char *last_period, *extension;
-	const struct table_entry *ent;
-	last_period = strrchr(path, '.');
-	if (!last_period || strchr(last_period, '/'))
-		goto not_found; /* no exension */
-	extension = last_period + 1;
-	for (ent = &content_type_table[0]; ent->extension; ++ent) {
-		if (!evutil_ascii_strcasecmp(ent->extension, extension))
-			return ent->content_type;
-	}
+typedef struct {
+	char addr[50];
+	int port;
+} target_address;
 
-not_found:
-	return "application/misc";
+void _reqhandler(struct evhttp_request *req, void *state) {
+    http_client *hc = (http_client*)state;
+    hc->finished = true;
+
+    if (req == NULL) {
+        printf("req is NULL, exit!\n");
+    } else if (req->response_code == 0) {
+        printf("connection refused!\n");
+    } else if (req->response_code != 200) {
+        printf("_reqhandler error: %u %s\n", req->response_code, req->response_code_line);
+        evhttp_send_error(hc->client, req->response_code, req->response_code_line);
+    } else {
+        printf("_reqhandler success: %u %s\n", req->response_code, req->response_code_line);
+        hc->response_buffer = evbuffer_new();
+
+        char buf[1024];
+        int s = 0;
+        while ((s = evbuffer_remove(req->input_buffer, &buf, sizeof(buf) - 1)) > 0) {
+            buf[s] = '\0';
+            //printf("%s", buf);
+            evbuffer_add(hc->response_buffer, buf, s);
+        }
+        evhttp_send_reply(hc->client, 200, "OK", hc->response_buffer);
+    }
+    printf("\n");
+    event_loopexit(NULL);
 }
 
-/* Callback used for the /dump URI, and for every non-GET request:
- * dumps all information to stdout and gives back a trivial 200 ok */
-static void
-dump_request_cb(struct evhttp_request *req, void *arg)
-{
-	const char *cmdtype;
-	struct evkeyvalq *headers;
-	struct evkeyval *header;
-	struct evbuffer *buf;
+void timeout_cb(int fd, short event, void *arg) {
+    http_client *hc = (http_client*)arg;
+    printf("Timed out\n");
 
-	switch (evhttp_request_get_command(req)) {
-	case EVHTTP_REQ_GET: cmdtype = "GET"; break;
-	case EVHTTP_REQ_POST: cmdtype = "POST"; break;
-	case EVHTTP_REQ_HEAD: cmdtype = "HEAD"; break;
-	case EVHTTP_REQ_PUT: cmdtype = "PUT"; break;
-	case EVHTTP_REQ_DELETE: cmdtype = "DELETE"; break;
-	case EVHTTP_REQ_OPTIONS: cmdtype = "OPTIONS"; break;
-	case EVHTTP_REQ_TRACE: cmdtype = "TRACE"; break;
-	case EVHTTP_REQ_CONNECT: cmdtype = "CONNECT"; break;
-	case EVHTTP_REQ_PATCH: cmdtype = "PATCH"; break;
-	default: cmdtype = "unknown"; break;
-	}
+    if (hc->finished == false){ 
+    	// Can't cancel request if the callback has already executed
+        evhttp_cancel_request(hc->req);
+    }
+}
 
-	printf("Received a %s request for %s\nHeaders:\n",
-	    cmdtype, evhttp_request_get_uri(req));
+int send_request(const char *addr, unsigned int port, enum evhttp_cmd_type type,
+	const char *uri,  struct evhttp_request *client) {
+    http_client *hc = (http_client *)malloc(sizeof(http_client));
+    hc->finished = false;
 
-	headers = evhttp_request_get_input_headers(req);
-	for (header = headers->tqh_first; header;
-	    header = header->next.tqe_next) {
-		printf("  %s: %s\n", header->key, header->value);
-	}
+    struct event ev;
+    struct timeval tv;
 
-	buf = evhttp_request_get_input_buffer(req);
-	puts("Input data: <<<");
-	while (evbuffer_get_length(buf)) {
-		int n;
-		char cbuf[128];
-		n = evbuffer_remove(buf, cbuf, sizeof(cbuf));
-		if (n > 0)
-			(void) fwrite(cbuf, 1, n, stdout);
-	}
-	puts(">>>");
+    tv.tv_sec = 20; // Timeout is set to 20.005 seconds
+    tv.tv_usec = 5000;
 
-	evhttp_send_reply(req, 200, "OK", NULL);
+    printf("Request to %s %d\n", addr, port);
+
+    event_init();
+
+    hc->conn = evhttp_connection_new(addr, port);
+    if (NULL == hc->conn) {
+        fprintf(stderr, "Cannot create evhttp_connection\n");
+        return 1;
+    }
+    evhttp_connection_set_timeout(hc->conn, 5);
+    hc->client = client;
+
+    hc->req = evhttp_request_new(_reqhandler, (void*)hc);
+    if (NULL == hc->req) {
+        fprintf(stderr, "Cannot create evhttp_request\n");
+        return 1;
+    }
+
+    evhttp_add_header(hc->req->output_headers, "Host", addr);
+    evhttp_add_header(hc->req->output_headers, "Content-Length", "0");
+    // IMPORTANT
+    evhttp_make_request(hc->conn, hc->req, type, uri);
+
+	// Set a timer to cancel the request after certain time
+    evtimer_set(&ev, timeout_cb, (void*)hc); 
+    evtimer_add(&ev, &tv);
+
+    printf("starting event loop..\n");
+    
+    event_dispatch();
+
+    return 0;
 }
 
 static void forward_request(struct evhttp_request *req, void *arg) {
@@ -156,8 +171,11 @@ static void forward_request(struct evhttp_request *req, void *arg) {
 	struct evkeyvalq *headers;
 	struct evkeyval *header;
 	struct evbuffer *buf;
+	target_address *sx = (target_address*) arg;
+	enum evhttp_cmd_type type;
+	const char *uri;
 	
-	sprintf(stderr, "forward_request called");
+	printf("forward_request called\n");
 
 	switch (evhttp_request_get_command(req)) {
 	case EVHTTP_REQ_GET: cmdtype = "GET"; break;
@@ -172,8 +190,12 @@ static void forward_request(struct evhttp_request *req, void *arg) {
 	default: cmdtype = "unknown"; break;
 	}
 
-	printf("Received a %s request for %s\nHeaders:\n",
+	type = evhttp_request_get_command(req);
+
+	printf("\nReceived a %s request for %s\nHeaders:\n",
 	    cmdtype, evhttp_request_get_uri(req));
+
+	uri = evhttp_request_get_uri(req);
 
 	headers = evhttp_request_get_input_headers(req);
 	for (header = headers->tqh_first; header;
@@ -192,180 +214,17 @@ static void forward_request(struct evhttp_request *req, void *arg) {
 	}
 	puts(">>>");
 
-	evhttp_send_reply(req, 200, "OK", NULL);
-}
+	evhttp_add_header(evhttp_request_get_output_headers(req),
+		    "Content-Type", "text/xml");
 
-/* This callback gets invoked when we get any http request that doesn't match
- * any other callback.  Like any evhttp server callback, it has a simple job:
- * it must eventually call evhttp_send_error() or evhttp_send_reply().
- */
-static void send_document_cb(struct evhttp_request *req, void *arg)
-{
-	struct evbuffer *evb = NULL;
-	const char *docroot = arg;
-	const char *uri = evhttp_request_get_uri(req);
-	struct evhttp_uri *decoded = NULL;
-	const char *path;
-	char *decoded_path;
-	char *whole_path = NULL;
-	size_t len;
-	int fd = -1;
-	struct stat st;
+	send_request(sx->addr, sx->port, type, uri, req);
 
-	if (evhttp_request_get_command(req) != EVHTTP_REQ_GET) {
-		dump_request_cb(req, arg);
-		return;
-	}
-
-	printf("Got a GET request for <%s>\n",  uri);
-
-	/* Decode the URI */
-	decoded = evhttp_uri_parse(uri);
-	if (!decoded) {
-		printf("It's not a good URI. Sending BADREQUEST\n");
-		evhttp_send_error(req, HTTP_BADREQUEST, 0);
-		return;
-	}
-
-	/* Let's see what path the user asked for. */
-	path = evhttp_uri_get_path(decoded);
-	if (!path) path = "/";
-
-	/* We need to decode it, to see what path the user really wanted. */
-	decoded_path = evhttp_uridecode(path, 0, NULL);
-	if (decoded_path == NULL)
-		goto err;
-	/* Don't allow any ".."s in the path, to avoid exposing stuff outside
-	 * of the docroot.  This test is both overzealous and underzealous:
-	 * it forbids aceptable paths like "/this/one..here", but it doesn't
-	 * do anything to prevent symlink following." */
-	if (strstr(decoded_path, ".."))
-		goto err;
-
-	len = strlen(decoded_path)+strlen(docroot)+2;
-	if (!(whole_path = malloc(len))) {
-		perror("malloc");
-		goto err;
-	}
-	evutil_snprintf(whole_path, len, "%s/%s", docroot, decoded_path);
-
-	if (stat(whole_path, &st)<0) {
-		goto err;
-	}
-
-	/* This holds the content we're sending. */
-	evb = evbuffer_new();
-
-	if (S_ISDIR(st.st_mode)) {
-		/* If it's a directory, read the comments and make a little
-		 * index page */
-#ifdef _WIN32
-		HANDLE d;
-		WIN32_FIND_DATAA ent;
-		char *pattern;
-		size_t dirlen;
-#else
-		DIR *d;
-		struct dirent *ent;
-#endif
-		const char *trailing_slash = "";
-
-		if (!strlen(path) || path[strlen(path)-1] != '/')
-			trailing_slash = "/";
-
-#ifdef _WIN32
-		dirlen = strlen(whole_path);
-		pattern = malloc(dirlen+3);
-		memcpy(pattern, whole_path, dirlen);
-		pattern[dirlen] = '\\';
-		pattern[dirlen+1] = '*';
-		pattern[dirlen+2] = '\0';
-		d = FindFirstFileA(pattern, &ent);
-		free(pattern);
-		if (d == INVALID_HANDLE_VALUE)
-			goto err;
-#else
-		if (!(d = opendir(whole_path)))
-			goto err;
-#endif
-
-		evbuffer_add_printf(evb,
-                    "<!DOCTYPE html>\n"
-                    "<html>\n <head>\n"
-                    "  <meta charset='utf-8'>\n"
-		    "  <title>%s</title>\n"
-		    "  <base href='%s%s'>\n"
-		    " </head>\n"
-		    " <body>\n"
-		    "  <h1>%s</h1>\n"
-		    "  <ul>\n",
-		    decoded_path, /* XXX html-escape this. */
-		    path, /* XXX html-escape this? */
-		    trailing_slash,
-		    decoded_path /* XXX html-escape this */);
-#ifdef _WIN32
-		do {
-			const char *name = ent.cFileName;
-#else
-		while ((ent = readdir(d))) {
-			const char *name = ent->d_name;
-#endif
-			evbuffer_add_printf(evb,
-			    "    <li><a href=\"%s\">%s</a>\n",
-			    name, name);/* XXX escape this */
-#ifdef _WIN32
-		} while (FindNextFileA(d, &ent));
-#else
-		}
-#endif
-		evbuffer_add_printf(evb, "</ul></body></html>\n");
-#ifdef _WIN32
-		FindClose(d);
-#else
-		closedir(d);
-#endif
-		evhttp_add_header(evhttp_request_get_output_headers(req),
-		    "Content-Type", "text/html");
-	} else {
-		/* Otherwise it's a file; add it to the buffer to get
-		 * sent via sendfile */
-		const char *type = guess_content_type(decoded_path);
-		if ((fd = open(whole_path, O_RDONLY)) < 0) {
-			perror("open");
-			goto err;
-		}
-
-		if (fstat(fd, &st)<0) {
-			/* Make sure the length still matches, now that we
-			 * opened the file :/ */
-			perror("fstat");
-			goto err;
-		}
-		evhttp_add_header(evhttp_request_get_output_headers(req),
-		    "Content-Type", type);
-		evbuffer_add_file(evb, fd, 0, st.st_size);
-	}
-
-	evhttp_send_reply(req, 200, "OK", evb);
-	goto done;
-err:
-	evhttp_send_error(req, 404, "Document was not found");
-	if (fd>=0)
-		close(fd);
-done:
-	if (decoded)
-		evhttp_uri_free(decoded);
-	if (decoded_path)
-		free(decoded_path);
-	if (whole_path)
-		free(whole_path);
-	if (evb)
-		evbuffer_free(evb);
+	
 }
 
 static void syntax(void)
 {
-	fprintf(stdout, "Syntax: proxy-server <sX address>\n");
+	fprintf(stdout, "Syntax: proxy-server <sX address> <sX port>\n");
 }
 
 int main(int argc, char **argv)
@@ -373,6 +232,8 @@ int main(int argc, char **argv)
 	struct event_base *base;
 	struct evhttp *http;
 	struct evhttp_bound_socket *handle;
+
+	target_address *sx;
 
 	ev_uint16_t port = 8088;
 #ifdef _WIN32
@@ -382,10 +243,13 @@ int main(int argc, char **argv)
 	if (signal(SIGPIPE, SIG_IGN) == SIG_ERR)
 		return (1);
 #endif
-	if (argc < 2) {
+	if (argc < 3) {
 		syntax();
 		return 1;
 	}
+	sx = (target_address *)malloc(sizeof(target_address));
+	strcpy(sx->addr, argv[1]);
+	sx->port = atoi(argv[2]);
 
 	base = event_base_new();
 	if (!base) {
@@ -400,12 +264,9 @@ int main(int argc, char **argv)
 		return 1;
 	}
 
-	/* The /dump URI will dump all requests to stdout and say 200 ok. */
-	evhttp_set_cb(http, "/dump", dump_request_cb, NULL);
-
 	/* We want to accept arbitrary requests, so we need to set a "generic"
 	 * cb.  We can also add callbacks for specific paths. */
-	evhttp_set_gencb(http, send_document_cb, argv[1]);
+	evhttp_set_gencb(http, forward_request, (void *)sx);
 
 	/* Now we tell the evhttp what port to listen on */
 	handle = evhttp_bind_socket_with_handle(http, "0.0.0.0", port);

@@ -7,10 +7,13 @@ else
   CXX := gcc
 endif
 
-CXXFLAGS := -levent -lcurl
+GCCFLAGS := -std=c11 -ggdb
+LIBS := -levent -lcurl
+
+CXXFLAGS := $(GCCFLAGS) $(LIBS)
 
 SRC := test_mk.c
-TARGET := run_test
+TARGET := run_test get put http-server http-client http-client-1 https-client proxy-server
 
 .PHONY: all clean
 test_mk:
@@ -26,6 +29,9 @@ http-server:
 	$(CXX) http-server.c -o $@ $(CXXFLAGS)
 
 http-client:
+	$(CXX) http-client.c -o $@ $(CXXFLAGS)
+
+http-client-1:
 	$(CXX) http-client-1.c -o $@ $(CXXFLAGS)
 
 https-client:
@@ -34,11 +40,11 @@ https-client:
 proxy-server:
 	$(CXX) proxy-server.c -o $@ $(CXXFLAGS)
 
-all: test_mk sample http-server http-client
+all: $(TARGET)
 	echo Make all
 
 clean:
-	rm -f *.exe
+	rm -f *.exe $(TARGET)
 
 
 FORCE:

@@ -27,6 +27,12 @@ void _reqhandler(struct evhttp_request *req, void *state) {
         printf("error: %u %s\n", req->response_code, req->response_code_line);
     } else {
         printf("success: %u %s\n", req->response_code, req->response_code_line);
+        char buf[1024];
+        int s = 0;
+        while ((s = evbuffer_remove(req->input_buffer, &buf, sizeof(buf) - 1)) > 0) {
+            buf[s] = '\0';
+            printf("%s", buf);
+        }
     }
     event_loopexit(NULL);
 }
@@ -54,7 +60,7 @@ int main(int argc, char *argv[]) {
     tv.tv_sec = 3; // Timeout is set to 3.005 seconds
     tv.tv_usec = 5000;
 
-    if (argc < 3) {
+    if (argc < 4) {
         syntax();
         return 1;
     }
@@ -81,7 +87,7 @@ int main(int argc, char *argv[]) {
     evhttp_add_header(hc->req->output_headers, "Host", addr);
     evhttp_add_header(hc->req->output_headers, "Content-Length", "0");
     // IMPORTANT
-    evhttp_make_request(hc->conn, hc->req, EVHTTP_REQ_GET, "/configuration");
+    evhttp_make_request(hc->conn, hc->req, EVHTTP_REQ_GET, argv[3]);
 
     evtimer_set(&ev, timeout_cb, (void*)hc); // Set a timer to cancel the request after certain time
     evtimer_add(&ev, &tv);
