@@ -1,17 +1,12 @@
 const path = require("path");
 const config = {
-entry: [
-    'webpack-dev-server/client?http://0.0.0.0:8080',
-    'webpack/hot/only-dev-server',
-     config.paths.demo
-],
-plugins:[
-  new webpack.HotModuleReplacementPlugin()
-],
+entry: "./Main.js",
+
 output: {
   path: path.resolve(__dirname, "dist"),
-  filename: "Main.js"
+  filename: "index.js"
 },
+
 module: {
   loaders: [
   {
@@ -21,8 +16,7 @@ module: {
           presets: ["react", "es2016"]
       }
   }
-]
-}
+]}
 };
  
 module.exports = config;
