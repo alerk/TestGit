@@ -83,7 +83,7 @@ typedef struct {
 	int port;
 } target_address;
 
-void _reqhandler(struct evhttp_request *req, void *state) {
+void http_request_done(struct evhttp_request *req, void *state) {
     http_client *hc = (http_client*)state;
     hc->finished = true;
 
@@ -92,10 +92,10 @@ void _reqhandler(struct evhttp_request *req, void *state) {
     } else if (req->response_code == 0) {
         printf("connection refused!\n");
     } else if (req->response_code != 200) {
-        printf("_reqhandler error: %u %s\n", req->response_code, req->response_code_line);
+        printf("http_request_done error: %u %s\n", req->response_code, req->response_code_line);
         evhttp_send_error(hc->client, req->response_code, req->response_code_line);
     } else {
-        printf("_reqhandler success: %u %s\n", req->response_code, req->response_code_line);
+        printf("http_request_done success: %u %s\n", req->response_code, req->response_code_line);
         hc->response_buffer = evbuffer_new();
 
         char buf[1024];
@@ -106,7 +106,13 @@ void _reqhandler(struct evhttp_request *req, void *state) {
             evbuffer_add(hc->response_buffer, buf, s);
         }
         evhttp_send_reply(hc->client, 200, "OK", hc->response_buffer);
+        evbuffer_free(hc->response_buffer);
     }
+    // Always clean up
+	printf("Free the client connection");
+    evhttp_connection_free(hc->conn);
+    free(hc);
+
     printf("\n");
     event_loopexit(NULL);
 }
@@ -144,7 +150,7 @@ int send_request(const char *addr, unsigned int port, enum evhttp_cmd_type type,
     evhttp_connection_set_timeout(hc->conn, 5);
     hc->client = client;
 
-    hc->req = evhttp_request_new(_reqhandler, (void*)hc);
+    hc->req = evhttp_request_new(http_request_done, (void*)hc);
     if (NULL == hc->req) {
         fprintf(stderr, "Cannot create evhttp_request\n");
         return 1;
@@ -175,19 +181,19 @@ static void forward_request(struct evhttp_request *req, void *arg) {
 	enum evhttp_cmd_type type;
 	const char *uri;
 	
-	printf("forward_request called\n");
+	// printf("forward_request called\n");
 
 	switch (evhttp_request_get_command(req)) {
-	case EVHTTP_REQ_GET: cmdtype = "GET"; break;
-	case EVHTTP_REQ_POST: cmdtype = "POST"; break;
-	case EVHTTP_REQ_HEAD: cmdtype = "HEAD"; break;
-	case EVHTTP_REQ_PUT: cmdtype = "PUT"; break;
-	case EVHTTP_REQ_DELETE: cmdtype = "DELETE"; break;
-	case EVHTTP_REQ_OPTIONS: cmdtype = "OPTIONS"; break;
-	case EVHTTP_REQ_TRACE: cmdtype = "TRACE"; break;
-	case EVHTTP_REQ_CONNECT: cmdtype = "CONNECT"; break;
-	case EVHTTP_REQ_PATCH: cmdtype = "PATCH"; break;
-	default: cmdtype = "unknown"; break;
+		case EVHTTP_REQ_GET: cmdtype = "GET"; break;
+		case EVHTTP_REQ_POST: cmdtype = "POST"; break;
+		case EVHTTP_REQ_HEAD: cmdtype = "HEAD"; break;
+		case EVHTTP_REQ_PUT: cmdtype = "PUT"; break;
+		case EVHTTP_REQ_DELETE: cmdtype = "DELETE"; break;
+		case EVHTTP_REQ_OPTIONS: cmdtype = "OPTIONS"; break;
+		case EVHTTP_REQ_TRACE: cmdtype = "TRACE"; break;
+		case EVHTTP_REQ_CONNECT: cmdtype = "CONNECT"; break;
+		case EVHTTP_REQ_PATCH: cmdtype = "PATCH"; break;
+		default: cmdtype = "unknown"; break;
 	}
 
 	type = evhttp_request_get_command(req);
@@ -215,7 +221,7 @@ static void forward_request(struct evhttp_request *req, void *arg) {
 	puts(">>>");
 
 	evhttp_add_header(evhttp_request_get_output_headers(req),
-		    "Content-Type", "text/xml");
+		    "Content-Type", "application/xml; text/xml");
 
 	send_request(sx->addr, sx->port, type, uri, req);
 
@@ -224,8 +230,13 @@ static void forward_request(struct evhttp_request *req, void *arg) {
 
 static void syntax(void)
 {
-	fprintf(stdout, "Syntax: proxy-server <sX address> <sX port>\n");
+	fprintf(stdout, "Syntax:\n proxy-server <sX address> <sX port>\n");
+	fprintf(stdout, " proxy-server <listen port> <sX address> <sX port>\n");
+	fprintf(stdout, " proxy-server <listen address> <listen port> <sX address> <sX port>\n");
 }
+
+#define DEFAULT_ADDR "0.0.0.0"
+#define DEFAULT_PORT 8088
 
 int main(int argc, char **argv)
 {
@@ -233,9 +244,11 @@ int main(int argc, char **argv)
 	struct evhttp *http;
 	struct evhttp_bound_socket *handle;
 
+	char listen_addr[50];
+	ev_uint16_t port;
+
 	target_address *sx;
 
-	ev_uint16_t port = 8088;
 #ifdef _WIN32
 	WSADATA WSAData;
 	WSAStartup(0x101, &WSAData);
@@ -243,13 +256,23 @@ int main(int argc, char **argv)
 	if (signal(SIGPIPE, SIG_IGN) == SIG_ERR)
 		return (1);
 #endif
+
+	strcpy(listen_addr, DEFAULT_ADDR);
+	port = DEFAULT_PORT;
+
 	if (argc < 3) {
 		syntax();
 		return 1;
+	} else if (argc == 4) {
+		port = atoi(argv[1]);
+	} else if (argc == 5) {
+		strcpy(listen_addr, argv[1]);
+		port = atoi(argv[2]);
 	}
+
 	sx = (target_address *)malloc(sizeof(target_address));
-	strcpy(sx->addr, argv[1]);
-	sx->port = atoi(argv[2]);
+	strcpy(sx->addr, argv[argc - 2]);
+	sx->port = atoi(argv[argc - 1]);
 
 	base = event_base_new();
 	if (!base) {
@@ -269,9 +292,9 @@ int main(int argc, char **argv)
 	evhttp_set_gencb(http, forward_request, (void *)sx);
 
 	/* Now we tell the evhttp what port to listen on */
-	handle = evhttp_bind_socket_with_handle(http, "0.0.0.0", port);
+	handle = evhttp_bind_socket_with_handle(http, listen_addr, port);
 	if (!handle) {
-		fprintf(stderr, "couldn't bind to port %d. Exiting.\n",
+		fprintf(stderr, "couldn't start proxy on port %d. Exiting.\n",
 		    (int)port);
 		return 1;
 	}
@@ -315,6 +338,8 @@ int main(int argc, char **argv)
 	}
 
 	event_base_dispatch(base);
+    // Always clean up
+    event_base_free(base);
 
 	return 0;
 }

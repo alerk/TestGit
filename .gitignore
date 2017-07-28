@@ -60,3 +60,4 @@ typings/
 
 # Executable file in windows
 .exe
+test/proxy-server.exe
