@@ -1,6 +1,4 @@
-LEARNING_NODEJS
-Express Example Project
+ALGORITHM
+Self-studying
 Change:
-- Building a CRUD with tutorial on Udemy
-- FIXED: PUT and DELETE not work properly => the function must have the order of parameters (request, response). Accidentally switched their positions last time.
-
+- Add test code from Grab
