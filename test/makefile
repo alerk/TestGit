@@ -13,7 +13,7 @@ LIBS := -levent -lcurl
 CXXFLAGS := $(GCCFLAGS) $(LIBS)
 
 SRC := test_mk.c
-TARGET := run_test get put http-server http-client http-client-1 https-client proxy-server
+TARGET := run_test get put http-server http-client http-client-1 https-client proxy-server stat1
 
 .PHONY: all clean
 test_mk:
@@ -39,6 +39,9 @@ https-client:
 
 proxy-server:
 	$(CXX) proxy-server.c -o $@ $(CXXFLAGS)
+
+stat1:
+	$(CXX) basic_statistic.c -o basic_statistic $(CXXFLAGS)
 
 all: $(TARGET)
 	echo Make all

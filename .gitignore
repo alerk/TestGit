@@ -61,3 +61,4 @@ typings/
 # Executable file in windows
 ./**/.exe
 test/*.exe
+test/**/.vscode
