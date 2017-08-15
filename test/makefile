@@ -43,11 +43,14 @@ proxy-server:
 stat1:
 	$(CXX) basic_statistic.c -o build/basic_statistic $(CXXFLAGS)
 
+hello_world:
+	$(CXX) hello_world.c -o build/$@ $(CXXFLAGS)
+
 all: $(TARGET)
 	echo Make all
 
 clean:
-	rm -f *.exe $(TARGET)
+	rm -f *.exe $(TARGET) build/*
 
 
 FORCE:
