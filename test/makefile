@@ -17,31 +17,31 @@ TARGET := run_test get put http-server http-client http-client-1 https-client pr
 
 .PHONY: all clean
 test_mk:
-	$(CXX) $(SRC) -o $(TARGET) $(CXXFLAGS)
+	$(CXX) $(SRC) -o build/$(TARGET) $(CXXFLAGS)
 
 get:
-	$(CXX) curl_sample.c -o $@ $(CXXFLAGS)
+	$(CXX) curl_sample.c -o build/$@ $(CXXFLAGS)
 
 put:
-	$(CXX) httpput.c -o $@ $(CXXFLAGS)
+	$(CXX) httpput.c -o build/$@ $(CXXFLAGS)
 
 http-server:
-	$(CXX) http-server.c -o $@ $(CXXFLAGS)
+	$(CXX) http-server.c -o build/$@ $(CXXFLAGS)
 
 http-client:
-	$(CXX) http-client.c -o $@ $(CXXFLAGS)
+	$(CXX) http-client.c -o build/$@ $(CXXFLAGS)
 
 http-client-1:
-	$(CXX) http-client-1.c -o $@ $(CXXFLAGS)
+	$(CXX) http-client-1.c -o build/$@ $(CXXFLAGS)
 
 https-client:
-	$(CXX) https-client.c -o $@ $(CXXFLAGS)
+	$(CXX) https-client.c -o build/$@ $(CXXFLAGS)
 
 proxy-server:
-	$(CXX) proxy-server.c -o $@ $(CXXFLAGS)
+	$(CXX) proxy-server.c -o build/$@ $(CXXFLAGS)
 
 stat1:
-	$(CXX) basic_statistic.c -o basic_statistic $(CXXFLAGS)
+	$(CXX) basic_statistic.c -o build/basic_statistic $(CXXFLAGS)
 
 all: $(TARGET)
 	echo Make all
