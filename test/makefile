@@ -7,13 +7,14 @@ else
   CXX := gcc
 endif
 
-GCCFLAGS := -std=c11 -ggdb
+GCCFLAGS := -std=c++11 -ggdb
 LIBS := -levent -lcurl
 
 CXXFLAGS := $(GCCFLAGS) $(LIBS)
 
 SRC := test_mk.c
-TARGET := run_test get put http-server http-client http-client-1 https-client proxy-server stat1
+TARGET := run_test get put http-server http-client http-client-1 https-client \
+		proxy-server stat1 rot13
 
 .PHONY: all clean
 test_mk:
@@ -45,6 +46,9 @@ stat1:
 
 hello_world:
 	$(CXX) hello_world.c -o build/$@ $(CXXFLAGS)
+
+rot13: 
+	$(CXX) $(CXXFLAGS)  $@.cpp -o build/$@ -levent_core
 
 all: $(TARGET)
 	echo Make all

@@ -114,11 +114,11 @@ conn_writecb(struct bufferevent *bev, void *user_data)
 	struct evbuffer *output = bufferevent_get_output(bev);
     size_t n = evbuffer_get_length(output);
     uint8_t data[1024];
-    ev_ssize_t readable = evbuffer_copyout(output, data, n);
+    ev_ssize_t readable = evbuffer_remove(output, data, n);
     int is_exit = (strncmp("exit", data, 4) == 0);
     if (!is_exit) 
     {
-        printf("Echoing %d bytes: %s\n", n, data);
+        printf("Reply to client %d bytes: %s\n", readable, data);
     }
     else 
     {
@@ -136,17 +136,21 @@ static void
 conn_readcb(struct bufferevent *bev, void *user_data)
 {
     uint8_t data[1024];
+	char* line;
     size_t n;
+	struct evbuffer* input = bufferevent_get_input(bev);
+	struct evbuffer* output = bufferevent_get_output(bev);
     for(;;)
     {
-        n = bufferevent_read(bev, data, sizeof(data));
+        line = evbuffer_readln(input, &n, EVBUFFER_EOL_LF);
         if (n <= 0)
         {
             // Done
             break;
         }
+		strcpy(data, line);
         data[n] = '\0';
-        bufferevent_write(bev, data, n);
+		evbuffer_add(output, data, n+1);
         printf("read: %s\n", data);
     }
 }
