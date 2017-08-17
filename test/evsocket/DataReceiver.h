@@ -2,13 +2,13 @@
 #define DATARECEIVER_H
 #include "DataReceiveListener.h"
 
-class DataReceiver : IDataReceiveListener{
+class DataReceiver : public DataReceiveListener {
     bool requestedClose;
 public:
     DataReceiver();
     virtual ~DataReceiver();
 
-    void onDataReceived(char* buffer);
+    void onDataReceived(int n, char* buffer);
     bool isRequestedClose() { return requestedClose; }
-}
+};
 #endif

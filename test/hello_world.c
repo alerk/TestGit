@@ -108,30 +108,39 @@ listener_cb(struct evconnlistener *listener, evutil_socket_t fd,
 	bufferevent_write(bev, MESSAGE, strlen(MESSAGE));
 }
 
+/**
+ * Called after something is written to the buffer
+ * Callback to invoke when the file descriptor is ready for writing, 
+ * or NULL if no callback is desired
+ */
 static void
 conn_writecb(struct bufferevent *bev, void *user_data)
 {
 	struct evbuffer *output = bufferevent_get_output(bev);
     size_t n = evbuffer_get_length(output);
-    uint8_t data[1024];
-    ev_ssize_t readable = evbuffer_remove(output, data, n);
-    int is_exit = (strncmp("exit", data, 4) == 0);
-    if (!is_exit) 
-    {
-        printf("Reply to client %d bytes: %s\n", readable, data);
-    }
-    else 
-    {
-        printf("exit received\n");
-        bufferevent_free(bev);
-    }
+	printf("Something is written into buffer: %d byte\n", n);
+    // uint8_t data[1024];
+    // int readable = evbuffer_remove(output, data, n);
+    // int is_exit = (strncmp("exit", data, 4) == 0);
+    // if (!is_exit) 
+    // {
+    //     printf("Reply to client %d bytes: %s\n", readable, data);
+    // }
+    // else 
+    // {
+    //     printf("exit received\n");
+    //     bufferevent_free(bev);
+    // }
 	// if (evbuffer_get_length(output) == 0) {
 	// 	printf("flushed answer\n");
 	// 	bufferevent_free(bev);
 	// }
 }
 
-// Do the echoing
+/** 
+ * Do the echoing
+ * Callback to invoke when there is data to be read, or NULL if no callback is desired
+ */
 static void
 conn_readcb(struct bufferevent *bev, void *user_data)
 {
@@ -149,9 +158,11 @@ conn_readcb(struct bufferevent *bev, void *user_data)
             break;
         }
 		strcpy(data, line);
-        data[n] = '\0';
-		evbuffer_add(output, data, n+1);
         printf("read: %s\n", data);
+        data[n] = '_';
+		data[n+1] = '\0';
+		printf("After read, do not add data back to output\n");
+		evbuffer_add(output, "Received data\n", 14);
     }
 }
 

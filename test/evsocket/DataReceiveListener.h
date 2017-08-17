@@ -7,6 +7,6 @@
 
 class DataReceiveListener {
 public:
-    void onDataReceived(char* buffer) = 0;
-}
+    virtual void onDataReceived(int n, char* buffer) = 0;
+};
 #endif
