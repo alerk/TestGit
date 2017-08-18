@@ -3,6 +3,9 @@
 
 #define MAX_LINE 16384
 
+
+int clientFd = -1;
+
 /**
  *  Data in from socket
  *  Callback invoke when there is data to be read
@@ -24,6 +27,7 @@ readcb(struct bufferevent *bev, void *arg) {
         if (!dataReceiver) {
             dataReceiver->onDataReceived(n, line);
         }
+        printf("Received %s\n", line);
         free(line);
     }
 
@@ -35,7 +39,8 @@ readcb(struct bufferevent *bev, void *arg) {
             int n = evbuffer_remove(input, buf, sizeof(buf));
             // if (!dataReceiver && (direction & SOCKET_RECV)) {
             if (!dataReceiver) {
-                dataReceiver->onDataReceived(n, line);
+                dataReceiver->onDataReceived(n, buf);
+                printf("Received %s\n", line);
             }
         }
     }
@@ -51,11 +56,12 @@ writecb(struct bufferevent *bev, void *arg) {
     DataReceiveListener* dataReceiver = evSocket->getDataReceiver();
 
     struct evbuffer *input, *output;
-    char *line;
-    size_t n;
     int i;
-    input = bufferevent_get_input(bev);
     output = bufferevent_get_output(bev);
+    char buf[1024];
+    size_t n = evbuffer_get_length(output);
+
+    evbuffer_remove(output, buf, n);
 
     // while ((line = evbuffer_readln(input, &n, EVBUFFER_EOL_LF))) {
     //     for (i = 0; i < n; ++i)
@@ -82,7 +88,7 @@ writecb(struct bufferevent *bev, void *arg) {
         // Nothing to write, just quit
         printf("Nothing to write");
     } else {
-        printf("%d bytes is written into buffer\n", n);
+        printf("%d bytes is written into buffer: %s\n", n, buf);
     }
 }
 
@@ -121,18 +127,19 @@ void
 do_accept(evutil_socket_t local_socket, short event, void *arg) {
     EvSocket* evSocket = static_cast<EvSocket*> (arg);
     struct event_base *base = evSocket->getEventBase();
+    struct bufferevent *bev = evSocket->getBufferEvent();
     struct sockaddr_storage ss;
     socklen_t slen = sizeof(ss);
-    int fd = accept(local_socket, (struct sockaddr*)&ss, &slen);
-    if (fd < 0) {
+    clientFd = accept(local_socket, (struct sockaddr*)&ss, &slen);
+    if (clientFd < 0) {
         perror("accept");
-    } else if (fd > FD_SETSIZE) {
-        close(fd);
+    } else if (clientFd > FD_SETSIZE) {
+        close(clientFd);
     } else {
-        struct bufferevent *bev;
-        evutil_make_socket_nonblocking(fd);
-        bev = bufferevent_socket_new(base, fd, BEV_OPT_CLOSE_ON_FREE);        
-        bufferevent_setcb(bev, readcb, NULL, errorcb, (void*)evSocket);
+        // struct bufferevent *bev;
+        evutil_make_socket_nonblocking(clientFd);
+        bev = bufferevent_socket_new(base, clientFd, BEV_OPT_CLOSE_ON_FREE);
+        bufferevent_setcb(bev, readcb, writecb, errorcb, (void*)evSocket);
         bufferevent_setwatermark(bev, EV_READ, 0, MAX_LINE);
         bufferevent_enable(bev, EV_READ|EV_WRITE);
     }
@@ -201,6 +208,7 @@ bool EvSocket::bind(const int port) {
         perror("Not a server");
         return false;
     }
+    fprintf(stderr, "Binding to %d\n", port);
 
     sin.sin_family = AF_INET;
     sin.sin_addr.s_addr = 0;
@@ -220,12 +228,17 @@ bool EvSocket::bind(const int port) {
     /*XXX check it */
     event_add(listener_event, NULL);
     /* Create the signal_event */
-    signal_event = evsignal_new(base, SIGINT, signal_cb, (void *)base);
+    // signal_event = evsignal_new(base, SIGINT, signal_cb, (void *)base);
 
-    if (!signal_event || event_add(signal_event, NULL)<0) {
-        fprintf(stderr, "Could not create/add a signal event!\n");
-        return false;
-    }
+    // if (!signal_event || event_add(signal_event, NULL)<0) {
+    //     fprintf(stderr, "Could not create/add a signal event!\n");
+    //     return false;
+    // }
+
+    return true;
+}
+
+bool EvSocket::accept(EvSocket& newSocket) {
 
     return true;
 }
@@ -250,7 +263,7 @@ bool EvSocket::connect(const std::string host, const int port) {
     /*XXX check it */
     event_add(connect_event, NULL);
     /* Create the signal_event */
-    signal_event = evsignal_new(base, SIGINT, signal_cb, (void *)base);
+    // signal_event = evsignal_new(base, SIGINT, signal_cb, (void *)base);
 
     if (!signal_event || event_add(signal_event, NULL)<0) {
         fprintf(stderr, "Could not create/add a signal event!\n");
@@ -293,7 +306,9 @@ int EvSocket::send( int size, const char* sendBuffer ) const {
     if (!bev) { // bufferevent is not init
         return -1;
     }
-    return bufferevent_write(bev, sendBuffer, size);
+    // return bufferevent_write(bev, sendBuffer, size);
+    fprintf(stderr, "TOSEND: %s\n", sendBuffer);
+    return size;
 }
 
 size_t EvSocket::recv( char* buffer ) const {

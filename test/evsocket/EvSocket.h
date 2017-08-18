@@ -33,6 +33,7 @@ public:
     // Server initialization
     bool create();
     bool bind( const int port );
+    bool accept(EvSocket& newSocket);
 
     // Client initialization
     bool connect(const std::string host, const int port);
@@ -59,6 +60,11 @@ public:
     // dataReceiver
     DataReceiveListener* getDataReceiver() {
         return dataReceiver;
+    }
+
+    // buffer event
+    struct bufferevent* getBufferEvent() {
+        return bev;
     }
 
     // virtual void onDataToSend( std::string& ) = 0;

@@ -20,6 +20,7 @@ broadcastClose() {
 static void*
 send_routine(void* arg) {
     volatile bool isSending = true;
+    printf("send_routine\n");
 
     EvSocket* sendSocket = new EvSocket(EvSocket::SOCKET_SEND, true);
     sendSocket->create();
@@ -39,6 +40,7 @@ send_routine(void* arg) {
 static void* 
 recv_routine(void* arg) {
     volatile bool isReceiving = true;
+    printf("recv_routine\n");
 
     EvSocket* recvSocket = new EvSocket(EvSocket::SOCKET_RECV, true);
     DataReceiver* simpleDataReceiver = new DataReceiver();
@@ -72,7 +74,7 @@ main(int argc, char* argv[]) {
         printf("[ERR] Failed to create send thread\n");
     }
 
-    if((ret = pthread_create(&recvThread, NULL, &send_routine, NULL)) != 0) {
+    if((ret = pthread_create(&recvThread, NULL, &recv_routine, NULL)) != 0) {
         printf("[ERR] Failed to create recv thread\n");
     }
 
