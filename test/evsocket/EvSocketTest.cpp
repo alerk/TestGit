@@ -19,21 +19,12 @@ broadcastClose() {
 
 static void*
 send_routine(void* arg) {
-    volatile bool isSending = true;
     printf("send_routine\n");
+    EvSocket* sendSocket = static_cast<EvSocket*>(arg);
 
-    EvSocket* sendSocket = new EvSocket(EvSocket::SOCKET_SEND, true);
     sendSocket->create();
     sendSocket->bind(SEND_PORT);
     sendSocket->start();
-    char sendBuffer[] = "Sending char";
-    while (isSending) {
-        sendSocket->send( sizeof(sendBuffer), sendBuffer);
-        if (isClosing) {
-            sendSocket->stop();
-        }
-        sleep(1);
-    }
     return NULL;
 }
 
@@ -41,25 +32,33 @@ static void*
 recv_routine(void* arg) {
     volatile bool isReceiving = true;
     printf("recv_routine\n");
+    EvSocket* recvSocket = static_cast<EvSocket*>(arg);
 
-    EvSocket* recvSocket = new EvSocket(EvSocket::SOCKET_RECV, true);
     DataReceiver* simpleDataReceiver = new DataReceiver();
     recvSocket->create();
     recvSocket->bind(RECV_PORT);
     recvSocket->addDataReceiveListener(simpleDataReceiver);
     recvSocket->start();
 
-    while (isReceiving) {
-        if (simpleDataReceiver->isRequestedClose()) {
-            isReceiving = false;
+    return NULL;
+}
 
-            // request to close other thread
-            broadcastClose();
-            recvSocket->stop();
+void*
+gen_routine(void* arg) {
+    EvSocket* sendSocket = static_cast<EvSocket*>(arg);
+
+    char sendBuffer[] = "Sending char";
+    while (true) {
+        printf("gen_routine loop\n");
+        int ret = sendSocket->send( sizeof(sendBuffer), sendBuffer);
+        if (isClosing) {
+            sendSocket->stop();
+        }
+        if (ret <=0) {
+            printf("send_routine error, break out\n");
         }
         sleep(1);
     }
-
     return NULL;
 }
 
@@ -67,20 +66,29 @@ int
 main(int argc, char* argv[]) {
     pthread_t sendThread;
     pthread_t recvThread;
+    pthread_t generateDataThread;
+
+    EvSocket* sendSocket = new EvSocket(EvSocket::SOCKET_SEND, true);
+    EvSocket* recvSocket = new EvSocket(EvSocket::SOCKET_RECV, true);
 
     int ret;
 
-    if((ret = pthread_create(&sendThread, NULL, &send_routine, NULL)) != 0) {
+    if((ret = pthread_create(&sendThread, NULL, &send_routine, sendSocket)) != 0) {
         printf("[ERR] Failed to create send thread\n");
     }
 
-    if((ret = pthread_create(&recvThread, NULL, &recv_routine, NULL)) != 0) {
+    if((ret = pthread_create(&recvThread, NULL, &recv_routine, recvSocket)) != 0) {
         printf("[ERR] Failed to create recv thread\n");
+    }
+
+    if((ret = pthread_create(&generateDataThread, NULL, &gen_routine, sendSocket)) != 0) {
+        printf("[ERR] Failed to create gen thread\n");
     }
 
     /* Wait for other threads to finish */
     pthread_join(sendThread, NULL);
     pthread_join(recvThread, NULL);
+    pthread_join(generateDataThread, NULL);
 
     printf("==== Program Ended! ====\n");
     return 0;

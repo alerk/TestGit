@@ -1,0 +1,2 @@
+/usr/bin/ar cr EntranceTest/lib/libEntranceTest.a  CMakeFiles/EntranceTest.dir/src/bug_fixing.cpp.o CMakeFiles/EntranceTest.dir/src/ptr_list_len.cpp.o CMakeFiles/EntranceTest.dir/src/deepest_pit.cpp.o
+/usr/bin/ranlib EntranceTest/lib/libEntranceTest.a

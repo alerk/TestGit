@@ -1,0 +1,4 @@
+/home/quyen/Work/eastgate/interview_question/CMakeFiles/EntranceTest.dir
+/home/quyen/Work/eastgate/interview_question/CMakeFiles/check_test1.dir
+/home/quyen/Work/eastgate/interview_question/CMakeFiles/check_test2.dir
+/home/quyen/Work/eastgate/interview_question/CMakeFiles/check_test3.dir
