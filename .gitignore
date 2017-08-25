@@ -63,3 +63,6 @@ typings/
 ./**/.exe
 test/*.exe
 test/**/.vscode
+
+# Commit message
+commit_msg
