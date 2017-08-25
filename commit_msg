@@ -1,4 +1,9 @@
-ALGORITHM
-Self-studying
+UNIT_TEST
+Interview for EastGate:
+Change: 
+- Add cxxtest framework
+
+EVSOCKET
+Optimize source code:
 Change:
-- Add test code from Grab
+- Code run but buffer overflow

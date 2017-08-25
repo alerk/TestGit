@@ -1,0 +1,9 @@
+{
+    "files.associations": {
+        "cerrno": "cpp",
+        "xmemory": "cpp",
+        "xutility": "cpp",
+        "system_error": "cpp"
+    },
+    "python.linting.pylintEnabled": false
+}

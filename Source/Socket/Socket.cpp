@@ -134,53 +134,51 @@ cout << "send m_sock : " << m_sock << endl;
 
 int Socket::recv ( std::string& s ) const
 {
-  char buf [ MAXRECV + 1 ];
+  char buf[MAXRECV + 1];
 
   s = "";
 
-  memset ( buf, 0, MAXRECV + 1 );
+  memset(buf, 0, MAXRECV + 1);
 
-if (DEBUG)
-{
-cout << "recv m_sock : " << m_sock << endl;
-}
+  if (DEBUG)
+  {
+    cout << "recv m_sock : " << m_sock << endl;
+  }
 
-  int status = ::recv ( m_sock, buf, MAXRECV, 0 );
+  int status = ::recv(m_sock, buf, MAXRECV, 0);
 
-if (DEBUG)
-{
-cout << "recv status = " << status << endl;
-}
+  if (DEBUG)
+  {
+    cout << "recv status = " << status << endl;
+  }
 
-  if ( status == -1 )
+  if (status == -1)
+  {
+    if (DEBUG)
     {
-if (DEBUG)
-{
-cout << "m_sock " << m_sock << " recv and s = " << s << endl;
-}
-      std::cout << "status == -1   errno == " << errno << "  in Socket::recv\n";
-      return 0;
+      cout << "m_sock " << m_sock << " recv and s = " << s << endl;
     }
-  else if ( status == 0 )
+    std::cout << "status == -1   errno == " << errno << "  in Socket::recv\n";
+    return 0;
+  }
+  else if (status == 0)
+  {
+    if (DEBUG)
     {
-if (DEBUG)
-{
-cout << "m_sock " << m_sock << " recv and s = " << s << endl;
-}
-      return 0;
+      cout << "m_sock " << m_sock << " recv and s = " << s << endl;
     }
+    return 0;
+  }
   else
+  {
+    s = buf;
+    if (DEBUG)
     {
-      s = buf;
-if (DEBUG)
-{
-cout << "m_sock " << m_sock << " recv and s = " << s << endl;
-}
-      return status;
+      cout << "m_sock " << m_sock << " recv and s = " << s << endl;
     }
+    return status;
+  }
 }
-
-
 
 bool Socket::connect ( const std::string host, const int port )
 {

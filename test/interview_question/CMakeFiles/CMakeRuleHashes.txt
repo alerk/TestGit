@@ -1,4 +1,0 @@
-# Hashes of file build rules.
-3c1f926c9449d0f56c38d1e5acd08455 check_test1.cc
-06c3ea0efe0db420abba7e5bdf3a3a87 check_test2.cc
-02f885f39cea78e1c0f3839928c179f7 check_test3.cc

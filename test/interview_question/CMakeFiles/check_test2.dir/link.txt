@@ -1,1 +1,0 @@
-/usr/bin/c++       CMakeFiles/check_test2.dir/check_test2.cc.o  -o EntranceTest/bin/check_test2 -rdynamic EntranceTest/lib/libEntranceTest.a 
