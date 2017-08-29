@@ -7,8 +7,8 @@
 #include <pthread.h>
 #include <string.h>
 
-#define SEND_PORT 65001
-#define RECV_PORT 65002
+#define SEND_PORT 65002
+#define RECV_PORT 65001
 
 static volatile bool isClosing = false;
 
@@ -49,10 +49,12 @@ gen_routine(void* arg) {
             int ret = sendSocket->send( sizeof(sendBuffer), sendBuffer);
         // }
         sleep(1);
-        if(counter>1000) {
-            break;
-        }
+        // if(counter++ > 10) {
+        //     break;
+        // }
     }
+    printf("Closing sendSocket!\n");
+    sendSocket->stop();
     return NULL;
 }
 
@@ -85,11 +87,18 @@ main(int argc, char* argv[]) {
     if((ret = pthread_create(&genThread, NULL, &gen_routine, sendSocket)) != 0) {
         printf("[ERR] Failed to create gen thread\n");
     }
+    
+    if (simpleDataReceiver->isRequestedClose()) {
+        recvSocket->stop();
+    }
 
     /* Wait for other threads to finish */
     pthread_join(sendThread, NULL);
     pthread_join(recvThread, NULL);
     pthread_join(genThread, NULL);
+
+    delete recvSocket;
+    delete sendSocket;
 
     printf("==== Program Ended! ====\n");
     return 0;

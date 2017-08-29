@@ -76,6 +76,9 @@ public:
     int isClientConnected() { return clientConnected; }
     void setClientConnected(int connect) { this->clientConnected = connect; }
 
+    // requested close
+    bool isRequestedClose();
+
     // get/set for direction
     char getDirection() { return this->direction; }
 

@@ -130,9 +130,13 @@ do_accept(struct evconnlistener *listener, evutil_socket_t fd,
     struct sockaddr *address, int socklen, void *ctx) {
 
     EvSocket* evSocket = static_cast<EvSocket*> (ctx);
+    if (evSocket->isClientConnected()) {
+        return;
+    }
     evSocket->createBufferEvent(fd);
     evSocket->setClientConnected(1);
-    printf("do_accept() called!\n");
+    printf("do_accept() on %d called!\n", evSocket->getPort());
+    // ((struct sockaddr_in*)address)->sin_port);
 }
 
 // void
@@ -164,7 +168,7 @@ EvSocket::EvSocket(char direction, bool isServer)
 }
 
 EvSocket::~EvSocket() {
-    stop();
+    // stop();
 }
 
 // Server initialization
@@ -263,12 +267,7 @@ EvSocket::start() {
     }
     event_base_dispatch(base); /* Fire the event_base */
 
-    return true;
-}
-
-bool 
-EvSocket::stop() {
-    event_base_loopexit(base, NULL);
+    /* stop() called but cleanup where the event_base_dispatch() */
     /* Always cleanup */
     if (signal_event) {
         event_free(signal_event);
@@ -276,6 +275,22 @@ EvSocket::stop() {
     if (base) {
         event_base_free(base);
     }
+    return true;
+}
+
+bool 
+EvSocket::stop() {
+    // Listen event for server
+    if (listener_event) {
+        evconnlistener_free(listener_event);
+    }
+
+    // buffer event for server and client
+    if (bev) {
+        bufferevent_free(bev);
+    }
+
+    // event_base_loopexit(base, NULL); // bev_exit_on_free
     return true;
 }
 
@@ -288,9 +303,10 @@ EvSocket::onDataWrite(size_t n, char* buf) {
 /* Passively read */
 void 
 EvSocket::onDataRead(size_t n, char* buf) {
-    if (dataReceiver) {
-        dataReceiver->onDataReceived(n, buf);
+    if (!dataReceiver) {
+        return;
     }
+    dataReceiver->onDataReceived(n, buf);
 }
 
 // Data Transmission
@@ -307,7 +323,7 @@ EvSocket::send( int size, const char* sendBuffer ) const {
     if (!clientConnected) {
         return -1;
     }
-    fprintf(stderr, "TOSEND: %s\n", sendBuffer);
+    // fprintf(stderr, "TOSEND: %s\n", sendBuffer);
     struct evbuffer* output = bufferevent_get_output(bev);
     return evbuffer_add(output, sendBuffer, size);
 }
@@ -335,6 +351,14 @@ EvSocket::onTimeout() {
 void 
 EvSocket::addDataReceiveListener(DataReceiveListener* dataListener) {
     this->dataReceiver = dataListener;
+}
+
+bool
+EvSocket::isRequestedClose() {
+    if (server && dataReceiver) {
+        return dataReceiver->isRequestedClose();
+    }
+    return false;
 }
 
 void 
