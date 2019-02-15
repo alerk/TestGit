@@ -64,5 +64,14 @@ typings/
 test/*.exe
 test/**/.vscode
 
+# Scala
+Scala/
+
+# fastai
+fastai_course/
+
+# DS_Store
+.DS_Store
+
 # Commit message
 commit_msg
