@@ -19,6 +19,6 @@
     "react": "^15.6.1",
     "react-dom": "^15.6.1",
     "webpack": "^3.0.0",
-    "webpack-dev-server": "^2.5.0"
+    "webpack-dev-server": "^3.10.3"
   }
 }
