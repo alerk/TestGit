@@ -229,7 +229,8 @@ bool EvSocket::bind(const int port) {
 bool 
 EvSocket::connect(const std::string host, const int port) {
     int block_size = 50;
-    char *message = (char*) malloc(block_size);
+    // char *message = (char*) malloc(block_size);
+    char *message = (char*) valloc(block_size); // Clang
     sin.sin_family = AF_INET;
     int status = inet_pton(AF_INET, host.c_str(), &(sin.sin_addr));
     sin.sin_port = htons(port);
@@ -297,7 +298,7 @@ EvSocket::stop() {
 /* Passively write */
 void 
 EvSocket::onDataWrite(size_t n, char* buf) {
-    printf("%d bytes is written into buffer: %s\n", n, buf);
+    printf("%zu bytes is written into buffer: %s\n", n, buf);
 }
 
 /* Passively read */
@@ -313,7 +314,8 @@ EvSocket::onDataRead(size_t n, char* buf) {
 /* Actively write */
 int 
 EvSocket::send( int size, const char* sendBuffer ) const {
-    if (!(direction && SOCKET_SEND)) {
+    // if (!(direction && SOCKET_SEND)) {
+    if (!(direction & SOCKET_SEND)) { // Clang
         fprintf(stderr, "CANNOT SEND\n");
         return -1;
     }
@@ -380,3 +382,4 @@ EvSocket::setNonBlocking ( const bool b ){
 
     fcntl(socketFd, F_SETFL, opts);
 }
+
