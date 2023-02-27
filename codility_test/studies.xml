@@ -1,0 +1,1452 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<bibdataset xsi:schemaLocation="" xmlns:xsi="" xmlns:ait="" xmlns:ce="" xmlns=""><item>
+
+<ait:process-info>
+<ait:date-delivered year="2012" month="10" day="16"/>
+<ait:date-sort year="2008" month="03" day="01"/>
+<ait:status type="core" state="backfile_new" stage="S300"/>
+</ait:process-info>
+<bibrecord>
+<item-info>
+<itemidlist>
+<ce:doi>10.1007/s00431-007-0495-y</ce:doi>
+<itemid idtype="PUI">351238211</itemid>
+<itemid idtype="MEDL">17516086</itemid>
+</itemidlist>
+<history>
+<date-created year="2021" month="03" day="13"/>
+<date-aip-loaded year="2021" month="03" day="16"/>
+<date-loaded year="2021" month="03" day="16"/>
+</history>
+<dbcollection>MEDL</dbcollection>
+</item-info>
+<head>
+<citation-info>
+<citation-type code="ar"/>
+<citation-language xml:lang="eng"/>
+<abstract-language xml:lang="eng"/>
+<author-keywords>
+<author-keyword>Chair-rising test</author-keyword>
+<author-keyword>Maximal isometric grip force</author-keyword>
+<author-keyword>Peak jump force</author-keyword>
+<author-keyword>Peak jump power</author-keyword>
+</author-keywords>
+</citation-info>
+<citation-title>
+<titletext xml:lang="eng" original="y">Mechanographic characteristics of adolescents and young adults with congenital heart disease</titletext>
+</citation-title>
+<author-group>
+<author seq="1" type="auth">
+<ce:initials>O.</ce:initials>
+<ce:indexed-name>Fricke O.</ce:indexed-name>
+<ce:surname>Fricke</ce:surname>
+<ce:given-name>Oliver</ce:given-name>
+<ce:e-address>frickeo@uni-koeln.de</ce:e-address>
+</author>
+<author seq="6" type="auth">
+<ce:initials>E.</ce:initials>
+<ce:indexed-name>Schoenau E.</ce:indexed-name>
+<ce:surname>Schoenau</ce:surname>
+<ce:given-name>Eckhard</ce:given-name>
+</author>
+<affiliation country="deu">
+<organization>One hospital</organization>
+<address-part>Kerpenerstr. 62</address-part>
+<city-group>D-50924 Cologne</city-group>
+</affiliation>
+</author-group>
+<author-group>
+<author seq="2" type="auth">
+<ce:initials>C.</ce:initials>
+<ce:indexed-name>Witzel C.</ce:indexed-name>
+<ce:surname>Witzel</ce:surname>
+<ce:given-name>Cordelia</ce:given-name>
+</author>
+<author seq="3" type="auth">
+<ce:initials>S.</ce:initials>
+<ce:indexed-name>Schickendantz S.</ce:indexed-name>
+<ce:surname>Schickendantz</ce:surname>
+<ce:given-name>Sabine</ce:given-name>
+</author>
+<author seq="4" type="auth">
+<ce:initials>N.</ce:initials>
+<ce:indexed-name>Sreeram N.</ce:indexed-name>
+<ce:surname>Sreeram</ce:surname>
+<ce:given-name>Narayanswami</ce:given-name>
+</author>
+<author seq="5" type="auth">
+<ce:initials>K.</ce:initials>
+<ce:indexed-name>Brockmeier K.</ce:indexed-name>
+<ce:surname>Brockmeier</ce:surname>
+<ce:given-name>Konrad</ce:given-name>
+</author>
+<affiliation country="deu">
+<organization>And the other</organization>
+<city-group>Cologne</city-group>
+</affiliation>
+</author-group>
+<correspondence>
+<person>
+<ce:initials>O.</ce:initials>
+<ce:indexed-name>Fricke O.</ce:indexed-name>
+<ce:surname>Fricke</ce:surname>
+</person>
+<affiliation country="deu">
+<organization>Children's Hospital, University of Cologne</organization>
+<address-part>Kerpenerstr. 62</address-part>
+<city-group>D-50924 Cologne</city-group>
+</affiliation>
+<ce:e-address>frickeo@uni-koeln.de</ce:e-address>
+</correspondence>
+<abstracts>
+<abstract original="y">
+<ce:para>The present study comprised 29 adolescents and young adults (15 females, 14 males; aged 14.1-23.9 years) with congenital heart disease (CHD) and focused on the interaction between the biomechanical system and CHD. Individuals were characterized by auxological (height, weight), dynamometric (MIGF, maximal isometric grip force) and mechanograpic parameters (Vmax, maximal velocity; PJF, peak jump force; PJP, peak jump power; time of five stand-ups in chair-rising test). PJF, PJP and MIGF were transformed into height-related SD-scores. MIGF-SDS and PJP-SDS were lower in the CHD patients than in reference individuals. PJP-SDS was lower than PJF-SDS. PJP-SDS was correlated to Vmax (r=0.62) and to the time of five-stand-ups in chair-rising (r=-0.62). Transcutaneous oxygen saturation and NYHA classes were correlated to Vmax (r=0.42 and r=-0.57, respectively) and to chair-rising performance (r=-0.60 and r=0.50, respectively). To conclude, individuals with CHD are characterized by an impaired inter- and intramuscular coordination, which is characterized by a greater decrease in muscular power than muscle force.</ce:para>
+</abstract>
+</abstracts>
+<source type="j" country="deu">
+<sourcetitle>European Journal of Pediatrics</sourcetitle>
+<sourcetitle-abbrev>Eur. J. Pediatr.</sourcetitle-abbrev>
+<issn type="print">03406199</issn>
+<codencode>EJPED</codencode>
+<volisspag>
+<voliss volume="167" issue="3"/>
+<pagerange first="331" last="336"/>
+</volisspag>
+<publicationyear first="2008"/>
+<publicationdate>
+<year>2008</year>
+<month>03</month>
+<day>09</day>
+</publicationdate>
+<publisher>
+<publishername>Springer Verlag</publishername>
+<affiliation country="deu">
+<address-part>Tiergartenstrasse 17</address-part>
+<city>Heidelberg</city>
+<postal-code>D-69121</postal-code>
+</affiliation>
+</publisher>
+</source>
+<enhancement>
+<descriptorgroup>
+<descriptors controlled="y" type="MED">
+<descriptor>
+<mainterm>adolescent</mainterm>
+</descriptor>
+<descriptor>
+<mainterm>adult</mainterm>
+</descriptor>
+</descriptors>
+</descriptorgroup>
+<classificationgroup>
+<classifications type="EMCLASS">
+<classification>
+<classification-code>7</classification-code>
+<classification-description>Pediatrics and Pediatric Surgery</classification-description>
+</classification>
+<classification>
+<classification-code>18</classification-code>
+<classification-description>Cardiovascular Diseases and Cardiovascular Surgery</classification-description>
+</classification>
+</classifications>
+</classificationgroup>
+</enhancement>
+</head>
+<tail>
+<bibliography refcount="10"/>
+</tail>
+</bibrecord>
+</item><item>
+
+<ait:process-info>
+<ait:date-delivered year="2012" month="10" day="16"/>
+<ait:date-sort year="2008" month="02" day="01"/>
+<ait:status type="core" state="backfile_new" stage="S300"/>
+</ait:process-info>
+<bibrecord>
+<item-info>
+<itemidlist>
+<ce:doi>10.1345/aph.1K303</ce:doi>
+<itemid idtype="MEDL">18212257</itemid>
+</itemidlist>
+<dbcollection>MEDL</dbcollection>
+</item-info>
+<head>
+<citation-info>
+<citation-type code="re"/>
+<citation-language xml:lang="eng"/>
+<abstract-language xml:lang="eng"/>
+<abstract-language xml:lang="spa"/>
+<abstract-language xml:lang="fre"/>
+<author-keywords>
+<author-keyword>Chronic myelogenous leukemia</author-keyword>
+<author-keyword>Dasatinib</author-keyword>
+<author-keyword>Nilotinib</author-keyword>
+</author-keywords>
+</citation-info>
+<citation-title>
+<titletext xml:lang="eng" original="y">Treatment options in imatinib-resistant chronic myelogenous leukemia</titletext>
+</citation-title>
+<abstracts>
+<abstract original="y">
+<ce:para>
+Objective: To discuss new therapeutic options available in the treatment of chronic myelogenous leukemia (CML) in patients who failed or were intolerant to imatinib therapy.
+Search terms included imatinib, dasatinib, nilotinib, and chronic myelogenous leukemia.
+Study selection and data extraction: Meeting abstracts and studies that reported preclinical and Phase 1, 2, and 3 trials published in English are included.
+Data synthesis: Imatinib is the standard of care for CML; however, some patients develop resistance or are intolerant to the drug. Phase 1 and 2 clinical data for the more potent tyrosine kinase inhibitors, dasatinib and nilotinib, are promising. Hematologic and cytogenetic responses are reported with both. There does not appear to be cross-resistance between the drugs, although neither is effective against all mutations of the hallmark molecular marker, the Philadelphia chromosome. Novel agents are also being examined for the treatment of patients with CML, including aurora kinase and farnesyl transferase inhibitors, as well as combination therapies.
+Conclusions: Dasatinib and nilotinib are second-line options for patients who have CML and are resistant or intolerant to imatinib. Toxicity profiles between agents may differ. Clinical trials with these drugs and others are ongoing.
+</ce:para>
+</abstract>
+</abstracts>
+<source type="j" country="usa">
+<sourcetitle>Annals of Pharmacotherapy</sourcetitle>
+<sourcetitle-abbrev>Ann. Pharmacother.</sourcetitle-abbrev>
+<issn type="print">10600280</issn>
+<codencode>APHRE</codencode>
+<volisspag>
+<voliss volume="42" issue="2"/>
+<pagerange first="259" last="264"/>
+</volisspag>
+<publicationyear first="2008"/>
+<publicationdate>
+<year>2008</year>
+<month>02</month>
+<day>05</day>
+</publicationdate>
+<publisher>
+<publishername>Harvey Whitney Books Company</publishername>
+<affiliation country="usa">
+<address-part>8044 Montgomery Road, Suite 415</address-part>
+<city>Cincinnati</city>
+<postal-code>OH 45236</postal-code>
+</affiliation>
+</publisher>
+</source>
+<enhancement/>
+</head>
+<tail>
+<bibliography refcount="40"/>
+</tail>
+</bibrecord>
+</item><item>
+
+<ait:process-info>
+<ait:date-delivered year="2012" month="10" day="16"/>
+<ait:date-sort year="2008" month="01" day="01"/>
+<ait:status type="core" state="backfile_new" stage="S300"/>
+</ait:process-info>
+<bibrecord>
+<item-info>
+<itemidlist>
+<ce:doi>10.1586/17474108.3.1.33</ce:doi>
+<itemid idtype="PUI">351227617</itemid>
+</itemidlist>
+<history>
+<date-created year="2008" month="01" day="01"/>
+<date-aip-loaded year="2008" month="01" day="01"/>
+</history>
+</item-info>
+<head>
+<citation-info>
+<citation-type code="cp"/>
+<citation-language xml:lang="eng"/>
+<abstract-language xml:lang="eng"/>
+</citation-info>
+<citation-title>
+<titletext xml:lang="eng" original="y">Women deliver: A global conference</titletext>
+</citation-title>
+<author-group>
+<author seq="1" type="auth">
+<ce:initials>F.A.</ce:initials>
+<ce:indexed-name>Donnay F.A.</ce:indexed-name>
+<ce:surname>Donnay</ce:surname>
+<ce:given-name>France A.</ce:given-name>
+<ce:e-address>france.donnay@un.org.pk</ce:e-address>
+</author>
+</author-group>
+<correspondence>
+<person>
+<ce:initials>F.A.</ce:initials>
+<ce:indexed-name>Donnay F.A.</ce:indexed-name>
+<ce:surname>Donnay</ce:surname>
+</person>
+<affiliation country="pak">
+<organization>United Nations Population Fund (UNFPA)</organization>
+<address-part>Street 17, Sector F-712</address-part>
+<city-group>Islamabad</city-group>
+</affiliation>
+<ce:e-address>france.donnay@un.org.pk</ce:e-address>
+</correspondence>
+<abstracts>
+<abstract original="y">
+<ce:para>A large international conference was held in London in October 2007 to celebrate 20 years of the Safe Motherhood Initiative. Launched in Nairobi, in 1987 by the WHO, the United Nations Population Fund and the World Bank, and joined by the United Nations Development Programme, the United Nations Children's Fund, the International Planned Parenthood Federation and the Population Council shortly thereafter, the initiative aimed at addressing the then neglected high maternal death rates in poor countries. Now, 20 years later, we can see that, while some progress has been made, the regions with the poorest maternal health have made the least progress: sub-Saharan Africa and South Asia. The objectives of the London conference were to take stock of the situation, to highlight the global consensus on effective strategies to reduce maternal mortality and, above all, to galvanize political will and commitment to address this scandalous situation. Although technical issues were discussed in a large number of small sessions, in panel after panel participants hammered on the need to create a global movement around maternal and newborn survival. Whether that objective was achieved will be the focus of this paper. © 2008 Future Drugs Ltd.</ce:para>
+</abstract>
+</abstracts>
+<source type="j" country="gbr">
+<sourcetitle>Expert Review of Obstetrics and Gynecology</sourcetitle>
+<sourcetitle-abbrev>Expert Rev. Obstet. Gynecol.</sourcetitle-abbrev>
+<issn type="print">17474108</issn>
+<volisspag>
+<voliss volume="3" issue="1"/>
+<pagerange first="33" last="34"/>
+</volisspag>
+<publicationyear first="2008"/>
+<publicationdate>
+<year>2008</year>
+<month>01</month>
+<day>12</day>
+</publicationdate>
+<publisher>
+<publishername>Expert Reviews Ltd.</publishername>
+<affiliation country="gbr">
+<address-part>2 Albert Place</address-part>
+<city>London</city>
+<postal-code>N3 1QB</postal-code>
+</affiliation>
+</publisher>
+</source>
+<enhancement>
+<descriptorgroup>
+<descriptors controlled="y" type="MED">
+<descriptor>
+<mainterm>Africa</mainterm>
+</descriptor>
+<descriptor>
+<mainterm>conference paper</mainterm>
+</descriptor>
+<descriptor>
+<mainterm weight="a">delivery</mainterm>
+</descriptor>
+<descriptor>
+<mainterm>whole body PET</mainterm>
+</descriptor>
+<descriptor>
+<mainterm>whole body MRI</mainterm>
+</descriptor>
+<descriptor>
+<mainterm>ion mobility spectrometry-mass spectrometry</mainterm>
+</descriptor>
+<descriptor>
+<mainterm>maternal mortality</mainterm>
+</descriptor>
+<descriptor>
+<mainterm>maternal welfare</mainterm>
+</descriptor>
+<descriptor>
+<mainterm>morbidity</mainterm>
+</descriptor>
+<descriptor>
+<mainterm>newborn mortality</mainterm>
+</descriptor>
+<descriptor>
+<mainterm>politics</mainterm>
+</descriptor>
+<descriptor>
+<mainterm>South Asia</mainterm>
+</descriptor>
+<descriptor>
+<mainterm>United Kingdom</mainterm>
+</descriptor>
+<descriptor>
+<mainterm>United Nations</mainterm>
+</descriptor>
+<descriptor>
+<mainterm weight="a">women's health</mainterm>
+</descriptor>
+<descriptor>
+<mainterm>world health organization</mainterm>
+</descriptor>
+</descriptors>
+</descriptorgroup>
+<classificationgroup>
+<classifications type="EMCLASS">
+<classification>
+<classification-code>10</classification-code>
+<classification-description>Obstetrics and Gynecology</classification-description>
+</classification>
+<classification>
+<classification-code>17</classification-code>
+<classification-description>Public Health, Social Medicine and Epidemiology</classification-description>
+</classification>
+</classifications>
+</classificationgroup>
+</enhancement>
+</head>
+</bibrecord>
+</item><item>
+
+<ait:process-info>
+<ait:date-delivered year="2012" month="10" day="16"/>
+<ait:date-sort year="2008" month="03" day="20"/>
+<ait:status type="core" state="backfile_new" stage="S300"/>
+</ait:process-info>
+<bibrecord>
+<item-info>
+<itemidlist>
+<ce:pii>S092777570700917X</ce:pii>
+<ce:doi>10.1016/j.colsurfa.2007.10.012</ce:doi>
+<itemid idtype="PUI">351232199</itemid>
+</itemidlist>
+<history>
+<date-created year="2008" month="03" day="03"/>
+</history>
+</item-info>
+<head>
+<citation-info>
+<citation-type code="ar"/>
+<citation-language xml:lang="eng"/>
+<abstract-language xml:lang="eng"/>
+<author-keywords>
+<author-keyword>Biomineralization</author-keyword>
+<author-keyword>Calcium oxalate</author-keyword>
+<author-keyword>Defect</author-keyword>
+<author-keyword>DPPC</author-keyword>
+<author-keyword>Langmuir-Blodgett film</author-keyword>
+</author-keywords>
+</citation-info>
+<citation-title>
+<titletext xml:lang="eng" original="y">Formation of circular patterns of calcium oxalate crystals at defective sites of Langmuir-Blodgett films</titletext>
+</citation-title>
+<author-group>
+<author seq="1" type="auth">
+<ce:initials>J.-M.</ce:initials>
+<ce:indexed-name>Ouyang J.-M.</ce:indexed-name>
+<ce:surname>Ouyang</ce:surname>
+<ce:given-name>Jian-Ming</ce:given-name>
+<ce:e-address>toyjm@jnu.edu.cn</ce:e-address>
+</author>
+<author seq="2" type="auth">
+<ce:initials>S.-P.</ce:initials>
+<ce:indexed-name>Deng S.-P.</ce:indexed-name>
+<ce:surname>Deng</ce:surname>
+<ce:given-name>Sui-Ping</ce:given-name>
+</author>
+<affiliation>
+<organization>Institute of Biomineralization and Lithiasis Research, Jinan University</organization>
+<city-group>Guangzhou, 510632</city-group>
+</affiliation>
+</author-group>
+<correspondence>
+<person>
+<ce:initials>J.-M.</ce:initials>
+<ce:indexed-name>Ouyang J.-M.</ce:indexed-name>
+<ce:surname>Ouyang</ce:surname>
+</person>
+<affiliation country="chn">
+<organization>Institute of Biomineralization and Lithiasis Research, Jinan University</organization>
+<city-group>Guangzhou, 510632</city-group>
+</affiliation>
+<ce:e-address>toyjm@jnu.edu.cn</ce:e-address>
+</correspondence>
+<abstracts>
+<abstract original="y">
+<ce:para>The circular patterns of calcium oxalate (CaOxa) crystals were first induced at defective sites of LB film of DPPC injured by potassium oxalate. As the crystallization time extend, the pattern of the crystals changed from a ring-shape to a solid circle. In comparison, the LB films without oxalate pretreatment only induced randomly growth of crystals. It was attributed to the destruction of molecular rearrangement at the boundaries of liquid condensed (LC) and liquid expanded (LE) phases of the LB film caused by oxalate. This model system might be used to mimic formation of CaOxa stones at surface of damaged renal epithelial membranes.</ce:para>
+</abstract>
+</abstracts>
+<source type="j" country="nld">
+<sourcetitle>Colloids and Surfaces A: Physicochemical and Engineering Aspects</sourcetitle>
+<sourcetitle-abbrev>Colloids Surf. A Physicochem. Eng. Asp.</sourcetitle-abbrev>
+<issn type="print">09277757</issn>
+<codencode>CPEAE</codencode>
+<volisspag>
+<voliss volume="317" issue="1-3"/>
+<pagerange first="155" last="158"/>
+</volisspag>
+<publicationyear first="2008"/>
+<publicationdate>
+<year>2008</year>
+<month>03</month>
+<day>20</day>
+</publicationdate>
+<publisher>
+<publishername>Research magazine</publishername>
+<affiliation country="nld">
+<address-part>P.O. Box 211</address-part>
+<city>Amsterdam</city>
+<postal-code>1000 AE</postal-code>
+</affiliation>
+</publisher>
+</source>
+<enhancement>
+<descriptorgroup>
+<descriptors controlled="y" type="DRG">
+<descriptor>
+<mainterm weight="a">some drug</mainterm>
+</descriptor>
+<descriptor>
+<mainterm weight="a">some other drug</mainterm>
+</descriptor>
+</descriptors>
+<descriptors controlled="y" type="MED">
+<descriptor>
+<mainterm>article</mainterm>
+</descriptor>
+<descriptor>
+<mainterm>comparative study</mainterm>
+</descriptor>
+</descriptors>
+</descriptorgroup>
+<classificationgroup>
+<classifications type="EMCLASS">
+<classification>
+<classification-code>27</classification-code>
+<classification-description>Biophysics, Bioengineering and Medical Instrumentation</classification-description>
+</classification>
+<classification>
+<classification-code>29</classification-code>
+<classification-description>Clinical and Experimental Biochemistry</classification-description>
+</classification>
+</classifications>
+</classificationgroup>
+<chemicalgroup>
+<chemicals source="esbd">
+<chemical>
+<chemical-name>calcium oxalate</chemical-name>
+<cas-registry-number>563-72-4</cas-registry-number>
+</chemical>
+<chemical>
+<chemical-name>dipalmitoylphosphatidylcholine</chemical-name>
+<cas-registry-number>2644-64-6</cas-registry-number>
+</chemical>
+</chemicals>
+</chemicalgroup>
+</enhancement>
+</head>
+<tail>
+<bibliography refcount="20"/>
+</tail>
+</bibrecord>
+</item><item>
+
+<ait:process-info>
+<ait:date-delivered year="2012" month="10" day="16"/>
+<ait:date-sort year="2008" month="03" day="01"/>
+<ait:status type="core" state="backfile_new" stage="S300"/>
+</ait:process-info>
+<bibrecord>
+<item-info>
+<itemidlist>
+<ce:doi>10.1111/j.1440-1797.2007.00859.x</ce:doi>
+<itemid idtype="PUI">351229624</itemid>
+<itemid idtype="MEDL">18275507</itemid>
+</itemidlist>
+<history>
+<date-created year="2008" month="02" day="21"/>
+</history>
+<dbcollection>MEDL</dbcollection>
+</item-info>
+<head>
+<citation-info>
+<citation-type code="ar"/>
+<citation-language xml:lang="eng"/>
+<abstract-language xml:lang="eng"/>
+<author-keywords>
+<author-keyword>ANZDATA</author-keyword>
+<author-keyword>Australia</author-keyword>
+<author-keyword>Immunosuppression</author-keyword>
+<author-keyword>Kidney transplantation</author-keyword>
+<author-keyword>Registry</author-keyword>
+</author-keywords>
+</citation-info>
+<citation-title>
+<titletext xml:lang="eng" original="y">Trends in adult post-kidney transplant immunosuppressive use in Australia, 1991-2005</titletext>
+</citation-title>
+<author-group>
+<author seq="1" type="auth">
+<ce:initials>S.H.</ce:initials>
+<ce:indexed-name>Chang S.H.</ce:indexed-name>
+<ce:surname>Chang</ce:surname>
+<ce:given-name>Sean H.</ce:given-name>
+<ce:e-address>sean@anzdata.org.au</ce:e-address>
+</author>
+<affiliation country="aus">
+<organization>Australia and New Zealand Dialysis and Transplant (ANZDATA) Registry, Queen Elizabeth Hospital</organization>
+<address-part>28 Woodville Road</address-part>
+<city-group>Woodville South, SA 5011</city-group>
+</affiliation>
+</author-group>
+<author-group>
+<author seq="1" type="auth">
+<ce:initials>S.H.</ce:initials>
+<ce:indexed-name>Chang S.H.</ce:indexed-name>
+<ce:surname>Chang</ce:surname>
+<ce:given-name>Sean H.</ce:given-name>
+<ce:e-address>sean@anzdata.org.au</ce:e-address>
+</author>
+<author seq="2" type="auth">
+<ce:initials>G.R.</ce:initials>
+<ce:indexed-name>Russ G.R.</ce:indexed-name>
+<ce:surname>Russ</ce:surname>
+<ce:given-name>Graeme R.</ce:given-name>
+</author>
+<author seq="3" type="auth">
+<ce:initials>S.J.</ce:initials>
+<ce:indexed-name>Chadban S.J.</ce:indexed-name>
+<ce:surname>Chadban</ce:surname>
+<ce:given-name>Steven J.</ce:given-name>
+</author>
+<author seq="4" type="auth">
+<ce:initials>S.</ce:initials>
+<ce:indexed-name>Campbell S.</ce:indexed-name>
+<ce:surname>Campbell</ce:surname>
+<ce:given-name>Scott</ce:given-name>
+</author>
+<author seq="5" type="auth">
+<ce:initials>S.P.</ce:initials>
+<ce:indexed-name>McDonald S.P.</ce:indexed-name>
+<ce:surname>McDonald</ce:surname>
+<ce:given-name>Stephen P</ce:given-name>
+</author>
+<affiliation country="aus">
+<organization>Australia and New Zealand Dialysis and Transplant (ANZDATA) Registry, Queen Elizabeth Hospital</organization>
+<city-group>Adelaide, SA</city-group>
+</affiliation>
+</author-group>
+<author-group>
+<author seq="1" type="auth">
+<ce:initials>S.H.</ce:initials>
+<ce:indexed-name>Chang S.H.</ce:indexed-name>
+<ce:surname>Chang</ce:surname>
+<ce:given-name>Sean H.</ce:given-name>
+<ce:e-address>sean@anzdata.org.au</ce:e-address>
+</author>
+<author seq="2" type="auth">
+<ce:initials>G.R.</ce:initials>
+<ce:indexed-name>Russ G.R.</ce:indexed-name>
+<ce:surname>Russ</ce:surname>
+<ce:given-name>Graeme R.</ce:given-name>
+</author>
+<author seq="5" type="auth">
+<ce:initials>S.P.</ce:initials>
+<ce:indexed-name>McDonald S.P.</ce:indexed-name>
+<ce:surname>McDonald</ce:surname>
+<ce:given-name>Stephen P</ce:given-name>
+</author>
+<affiliation country="aus">
+<organization>Department of Nephrology and Transplantation, Queen Elizabeth Hospital</organization>
+<city-group>Adelaide, SA</city-group>
+</affiliation>
+</author-group>
+<author-group>
+<author seq="1" type="auth">
+<ce:initials>S.H.</ce:initials>
+<ce:indexed-name>Chang S.H.</ce:indexed-name>
+<ce:surname>Chang</ce:surname>
+<ce:given-name>Sean H.</ce:given-name>
+<ce:e-address>sean@anzdata.org.au</ce:e-address>
+</author>
+<author seq="2" type="auth">
+<ce:initials>G.R.</ce:initials>
+<ce:indexed-name>Russ G.R.</ce:indexed-name>
+<ce:surname>Russ</ce:surname>
+<ce:given-name>Graeme R.</ce:given-name>
+</author>
+<author seq="5" type="auth">
+<ce:initials>S.P.</ce:initials>
+<ce:indexed-name>McDonald S.P.</ce:indexed-name>
+<ce:surname>McDonald</ce:surname>
+<ce:given-name>Stephen P</ce:given-name>
+</author>
+<affiliation country="aus">
+<organization>School of Medicine, University of Adelaide</organization>
+<city-group>Adelaide, SA</city-group>
+</affiliation>
+</author-group>
+<author-group>
+<author seq="3" type="auth">
+<ce:initials>S.J.</ce:initials>
+<ce:indexed-name>Chadban S.J.</ce:indexed-name>
+<ce:surname>Chadban</ce:surname>
+<ce:given-name>Steven J.</ce:given-name>
+</author>
+<affiliation country="aus">
+<organization>Department of Transplantation, Royal Prince Alfred Hospital</organization>
+<city-group>Sydney, NSW</city-group>
+</affiliation>
+</author-group>
+<author-group>
+<author seq="3" type="auth">
+<ce:initials>S.J.</ce:initials>
+<ce:indexed-name>Chadban S.J.</ce:indexed-name>
+<ce:surname>Chadban</ce:surname>
+<ce:given-name>Steven J.</ce:given-name>
+</author>
+<affiliation country="aus">
+<organization>Facuty of Medicine, University of Sydney</organization>
+<city-group>Sydney, NSW</city-group>
+</affiliation>
+</author-group>
+<author-group>
+<author seq="4" type="auth">
+<ce:initials>S.</ce:initials>
+<ce:indexed-name>Campbell S.</ce:indexed-name>
+<ce:surname>Campbell</ce:surname>
+<ce:given-name>Scott</ce:given-name>
+</author>
+<affiliation country="aus">
+<organization>Queensland Renal Transplant Service, Princess Alexandra Hospital</organization>
+<city-group>Brisbane, QLD</city-group>
+</affiliation>
+</author-group>
+<author-group>
+<author seq="4" type="auth">
+<ce:initials>S.</ce:initials>
+<ce:indexed-name>Campbell S.</ce:indexed-name>
+<ce:surname>Campbell</ce:surname>
+<ce:given-name>Scott</ce:given-name>
+</author>
+<affiliation country="aus">
+<organization>School of Medicine, University of Queensland</organization>
+<city-group>Brisbane, QLD</city-group>
+</affiliation>
+</author-group>
+<correspondence>
+<person>
+<ce:initials>S.H.</ce:initials>
+<ce:indexed-name>Chang S.H.</ce:indexed-name>
+<ce:degrees>Dr.</ce:degrees>
+<ce:surname>Chang</ce:surname>
+</person>
+<affiliation country="aus">
+<organization>Australia and New Zealand Dialysis and Transplant (ANZDATA) Registry, Queen Elizabeth Hospital</organization>
+<address-part>28 Woodville Road</address-part>
+<city-group>Woodville South, SA 5011</city-group>
+</affiliation>
+<ce:e-address>sean@anzdata.org.au</ce:e-address>
+</correspondence>
+<abstracts>
+<abstract original="y">
+<ce:para>Aim: Kidney transplant outcomes have improved over the past 15 years, partly due to improvements in immunosuppression. We used data from the Australia and New Zealand Dialysis and Transplant (ANZDATA) Registry to examine trends in immunosuppressive use post transplant. Methods: All adult (recipient age 16+ years) kidney-only transplants performed in Australia from April 1991 to December 2005 were followed to graft loss or December 2005. Immunosuppressive use at induction, 1, 3 and 5 years post transplant were analysed by transplant cohort. Results: Calcineurin-inhibitors (CNI) were used in most recipients for induction and maintenance immunosuppression, with increasing tacrolimus use. Induction cyclosporin dose increased since 2001 (from 5.8 to 7.9 mg/kg per day), but maintenance cyclosporin and tacrolimus dose decreased (from 3.8 to 3.0 mg/kg per day cyclosporin at 1 year post transplant). CNI-free induction increased since 2002 (from 1.4% to 8.4%), while CNI-free maintenance increased throughout the study period. Mycophenolates were the predominant antimetabolite used. Steroid-free maintenance decreased (from 22.7% to 8.7% at 1 year post transplant), as did median prednisolone doses (from 0.12 to 0.09 mg/kg per day at 1 year post transplant). Sirolimus or everolimus are increasingly used for CNI-sparing rather than as antimetabolites substitutes. OKT3 or antithymocyte globulin induction decreased, while anti-CD25 antibody usage increased from 9.5% to 57.1% since 2000. Conclusion: There is a trend to more potent induction immunosuppression with tacrolimus, mycophenolates and anti-CD-25 antibodies, but with CNI avoidance or minimization during maintenance phase. While steroid avoidance/cessation decreased, maintenance steroid dose has also decreased. Anti-CD25 antibodies are now used in &gt;50% of recipients. © 2007 The Authors.</ce:para>
+</abstract>
+</abstracts>
+<source type="j" country="aus">
+<sourcetitle>Nephrology</sourcetitle>
+<sourcetitle-abbrev>Nephrology</sourcetitle-abbrev>
+<issn type="print">13205358</issn>
+<issn type="electronic">14401797</issn>
+<codencode>NEPHF</codencode>
+<volisspag>
+<voliss volume="13" issue="2"/>
+<pagerange first="171" last="176"/>
+</volisspag>
+<publicationyear first="2008"/>
+<publicationdate>
+<year>2008</year>
+<month>04</month>
+<day>07</day>
+</publicationdate>
+<publisher>
+<publishername>Blackwell Publishing</publishername>
+<affiliation country="aus">
+<address-part>550 Swanston Street</address-part>
+<city>Carlton South</city>
+<postal-code>VIC 3053</postal-code>
+</affiliation>
+</publisher>
+</source>
+<enhancement>
+<descriptorgroup>
+<descriptors controlled="y" type="DRG">
+<descriptor>
+<mainterm>cyclosporin A</mainterm>
+<link>drug therapy</link>
+</descriptor>
+<descriptor>
+<mainterm>everolimus</mainterm>
+<link>drug therapy</link>
+</descriptor>
+<descriptor>
+<mainterm>mycophenolic acid</mainterm>
+</descriptor>
+<descriptor>
+<mainterm>mycophenolic acid 2 morpholinoethyl ester</mainterm>
+<link>drug therapy</link>
+</descriptor>
+<descriptor>
+<mainterm>OKT 3</mainterm>
+<link>drug therapy</link>
+</descriptor>
+<descriptor>
+<mainterm>prednisone</mainterm>
+<link>drug dose</link>
+<link>drug therapy</link>
+<link>oral drug administration</link>
+</descriptor>
+<descriptor>
+<mainterm>rapamycin</mainterm>
+<link>drug therapy</link>
+</descriptor>
+<descriptor>
+<mainterm>tacrolimus</mainterm>
+<link>drug dose</link>
+<link>drug therapy</link>
+</descriptor>
+<descriptor>
+<mainterm>thymocyte antibody</mainterm>
+<link>drug therapy</link>
+</descriptor>
+</descriptors>
+<descriptors controlled="y" type="MED">
+<descriptor>
+<mainterm>adult</mainterm>
+</descriptor>
+<descriptor>
+<mainterm>article</mainterm>
+</descriptor>
+<descriptor>
+<mainterm>Australia</mainterm>
+</descriptor>
+<descriptor>
+<mainterm>drug dose reduction</mainterm>
+</descriptor>
+<descriptor>
+<mainterm>drug use</mainterm>
+</descriptor>
+<descriptor>
+<mainterm>female</mainterm>
+</descriptor>
+<descriptor>
+<mainterm>follow up</mainterm>
+</descriptor>
+<descriptor>
+<mainterm>graft failure</mainterm>
+<link>complication</link>
+<link>etiology</link>
+</descriptor>
+<descriptor>
+<mainterm>graft recipient</mainterm>
+</descriptor>
+<descriptor>
+<mainterm>human</mainterm>
+</descriptor>
+<descriptor>
+<mainterm weight="a">immunosuppressive treatment</mainterm>
+</descriptor>
+<descriptor>
+<mainterm>implant registry</mainterm>
+</descriptor>
+<descriptor>
+<mainterm weight="a">kidney graft rejection</mainterm>
+<link>drug therapy</link>
+<link>prevention</link>
+</descriptor>
+<descriptor>
+<mainterm weight="a">kidney transplantation</mainterm>
+</descriptor>
+<descriptor>
+<mainterm>major clinical study</mainterm>
+</descriptor>
+<descriptor>
+<mainterm>male</mainterm>
+</descriptor>
+<descriptor>
+<mainterm>New Zealand</mainterm>
+</descriptor>
+<descriptor>
+<mainterm>outcome assessment</mainterm>
+</descriptor>
+<descriptor>
+<mainterm>priority journal</mainterm>
+</descriptor>
+</descriptors>
+</descriptorgroup>
+<classificationgroup>
+<classifications type="EMCLASS">
+<classification>
+<classification-code>28</classification-code>
+<classification-description>Urology and Nephrology</classification-description>
+</classification>
+<classification>
+<classification-code>37</classification-code>
+<classification-description>Drug Literature Index</classification-description>
+</classification>
+</classifications>
+</classificationgroup>
+<manufacturergroup>
+<manufacturers type="MNF">
+<manufacturer country="che">Novartis</manufacturer>
+</manufacturers>
+</manufacturergroup>
+<tradenamegroup>
+<tradenames type="TNM">
+<trademanuitem>
+<tradename>myfortic</tradename>
+<manufacturer>Novartis</manufacturer>
+</trademanuitem>
+<trademanuitem>
+<tradename>neoral</tradename>
+<manufacturer country="che">Novartis</manufacturer>
+</trademanuitem>
+<trademanuitem>
+<tradename>sandimmune</tradename>
+<manufacturer country="che">Novartis</manufacturer>
+</trademanuitem>
+</tradenames>
+</tradenamegroup>
+<chemicalgroup>
+<chemicals source="esbd">
+<chemical>
+<chemical-name>OKT 3</chemical-name>
+<cas-registry-number>140608-64-6</cas-registry-number>
+</chemical>
+<chemical>
+<chemical-name>cyclosporin A</chemical-name>
+<cas-registry-number>59865-13-3</cas-registry-number>
+<cas-registry-number>63798-73-2</cas-registry-number>
+</chemical>
+<chemical>
+<chemical-name>everolimus</chemical-name>
+<cas-registry-number>159351-69-6</cas-registry-number>
+</chemical>
+<chemical>
+<chemical-name>mycophenolic acid</chemical-name>
+<cas-registry-number>23047-11-2</cas-registry-number>
+<cas-registry-number>24280-93-1</cas-registry-number>
+</chemical>
+<chemical>
+<chemical-name>mycophenolic acid 2 morpholinoethyl ester</chemical-name>
+<cas-registry-number>116680-01-4</cas-registry-number>
+<cas-registry-number>128794-94-5</cas-registry-number>
+</chemical>
+<chemical>
+<chemical-name>prednisone</chemical-name>
+<cas-registry-number>53-03-2</cas-registry-number>
+</chemical>
+<chemical>
+<chemical-name>rapamycin</chemical-name>
+<cas-registry-number>53123-88-9</cas-registry-number>
+</chemical>
+<chemical>
+<chemical-name>tacrolimus</chemical-name>
+<cas-registry-number>104987-11-3</cas-registry-number>
+</chemical>
+</chemicals>
+</chemicalgroup>
+</enhancement>
+</head>
+<tail>
+<bibliography refcount="36"/>
+</tail>
+</bibrecord>
+</item><item>
+
+<ait:process-info>
+<ait:date-delivered year="2012" month="10" day="16"/>
+<ait:date-sort year="2008" month="02" day="13"/>
+<ait:status type="core" state="backfile_new" stage="S300"/>
+</ait:process-info>
+<bibrecord>
+<item-info>
+<itemidlist>
+<ce:doi>10.1021/ja074161f</ce:doi>
+<itemid idtype="PUI">351238635</itemid>
+<itemid idtype="MEDL">18198868</itemid>
+</itemidlist>
+<history>
+<date-created year="2008" month="02" day="27"/>
+</history>
+<dbcollection>MEDL</dbcollection>
+</item-info>
+<head>
+<citation-info>
+<citation-type code="ar"/>
+<citation-language xml:lang="eng"/>
+<abstract-language xml:lang="eng"/>
+</citation-info>
+<citation-title>
+<titletext xml:lang="eng" original="y">Anion-Induced Adsorption of Ferrocenated Nanoparticles</titletext>
+</citation-title>
+<author-group>
+<author seq="1" type="auth">
+<ce:initials>R.L.</ce:initials>
+<ce:indexed-name>Stiles R.L.</ce:indexed-name>
+<ce:surname>Stiles</ce:surname>
+<ce:given-name>Rebecca L.</ce:given-name>
+</author>
+<author seq="2" type="auth">
+<ce:initials>R.</ce:initials>
+<ce:indexed-name>Balasubramanian R.</ce:indexed-name>
+<ce:surname>Balasubramanian</ce:surname>
+<ce:given-name>Ramjee</ce:given-name>
+</author>
+<author seq="4" type="auth">
+<ce:initials>R.W.</ce:initials>
+<ce:indexed-name>Murray R.W.</ce:indexed-name>
+<ce:surname>Murray</ce:surname>
+<ce:given-name>Royce W.</ce:given-name>
+<ce:e-address>rwm@email.unc.edu</ce:e-address>
+</author>
+<affiliation country="usa">
+<organization>Kenan Laboratories of Chemistry, University of North Carolina</organization>
+<city-group>Chapel Hill, NC 27599</city-group>
+</affiliation>
+</author-group>
+<author-group>
+<author seq="3" type="auth">
+<ce:initials>S.W.</ce:initials>
+<ce:indexed-name>Feldberg S.W.</ce:indexed-name>
+<ce:surname>Feldberg</ce:surname>
+<ce:given-name>Stephen W.</ce:given-name>
+</author>
+<affiliation country="usa">
+<organization>Chemistry Department, Brookhaven National Laboratory</organization>
+<city-group>Upton, NY 11973</city-group>
+</affiliation>
+</author-group>
+<correspondence>
+<person>
+<ce:initials>R.W.</ce:initials>
+<ce:indexed-name>Murray R.W.</ce:indexed-name>
+<ce:surname>Murray</ce:surname>
+</person>
+<affiliation country="usa">
+<organization>Kenan Laboratories of Chemistry, University of North Carolina</organization>
+<city-group>Chapel Hill, NC 27599</city-group>
+</affiliation>
+<ce:e-address>rwm@email.unc.edu</ce:e-address>
+</correspondence>
+<abstracts>
+<abstract original="y">
+<ce:para>Au nanoparticles fully coated with ω-ferrocenyl hexanethiolate ligands, with average composition Au225(ω-ferrocenyl hexanethiolate)43, exhibit a unique combination of adsorption properties on Pt electrodes. The adsorbed layer is so robust that electrodes bearing submonolayer, monolayer, and multilayer quantities of these nanoparticles can be transferred to fresh electrolyte solutions and there exhibit stable ferrocene voltammetry over long periods of time. The kinetics of forming the robustly adsorbed layer are slow; monolayer and submonolayer deposition can be described by a rate law that is first order in nanoparticle concentration and in available electrode surface. The adsorption mechanism is proposed to involve entropically enhanced (multiple) ion-pair bridges between oxidized (ferrocenium) sites and certain specifically adsorbed electrolyte anions on the electrode. Adsorption is promoted by scanning to positive potentials (through the ferrocene wave) and by high concentrations of Bu4N+X- electrolyte (X- = ClO4-, PF6-) in the CH2Cl2 solvent; there is no adsorption if X- = p-toluenesulfonate or if the electrode is coated with an alkanethiolate monolayer. The electrode double layer capacity is not appreciably diminished by the adsorbed ferrocenated nanoparticles, which are gradually desorbed by scanning to potentials more negative than the electrode's potential of zero charge. At very slow scan rates, voltammetric current peaks are symmetrical and nearly reversible, but exhibit Efwhm considerably narrower (typically 35 mV) than ideally expected (90.6 mV, at 298 K) for a one-electron transfer or for reactions of multiple, independent redox centers with identical formal potentials. The peak narrowing is qualitatively explicable by a surface-activity effect invoking large, attractive lateral interactions between nanoparticles and, or alternatively, by a model in which ferrocene sites react serially at formal potentials that become successively altered as ion-pair bridges are formed. At faster scan rates, both ΔEpeak and Efwhm increase in a manner consistent with a combination of uncompensated ohmic resistance of the electrolyte solution and of the adsorbed film, as distinct from behavior produced by slow electron transfer. </ce:para>
+</abstract>
+</abstracts>
+<source type="j" country="usa">
+<sourcetitle>Journal of the American Chemical Society</sourcetitle>
+<sourcetitle-abbrev>J. Am. Chem. Soc.</sourcetitle-abbrev>
+<issn type="print">00027863</issn>
+<codencode>JACSA</codencode>
+<volisspag>
+<voliss volume="130" issue="6"/>
+<pagerange first="1856" last="1865"/>
+</volisspag>
+<publicationyear first="2008"/>
+<publicationdate>
+<year>2008</year>
+<month>02</month>
+<day>13</day>
+</publicationdate>
+<publisher>
+<publishername>American Chemical Society</publishername>
+<affiliation country="usa">
+<address-part>2540 Olentangy River Road, P.O. Box 3337</address-part>
+<city>Columbus</city>
+<postal-code>OH 43210-3337</postal-code>
+</affiliation>
+</publisher>
+</source>
+<enhancement>
+<descriptorgroup>
+<descriptors controlled="y" type="DRG">
+<descriptor>
+<mainterm candidate="y">stomach lymphoma</mainterm>
+</descriptor>
+<descriptor>
+<mainterm>carcinoembryonic antigen</mainterm>
+</descriptor>
+<descriptor>
+<mainterm weight="a">CA 72-4 antigen</mainterm>
+</descriptor>
+<descriptor>
+<mainterm>CA 19-9 antigen</mainterm>
+</descriptor>
+<descriptor>
+<mainterm>electrolyte</mainterm>
+</descriptor>
+<descriptor>
+<mainterm weight="a">ferrocene derivative</mainterm>
+</descriptor>
+<descriptor>
+<mainterm weight="a">gold</mainterm>
+</descriptor>
+<descriptor>
+<mainterm>ligand</mainterm>
+</descriptor>
+<descriptor>
+<mainterm weight="a">nanoparticle</mainterm>
+</descriptor>
+<descriptor>
+<mainterm>nitrogen</mainterm>
+</descriptor>
+<descriptor>
+<mainterm weight="a" candidate="y">omega ferrocenylhexanethiolate</mainterm>
+</descriptor>
+<descriptor>
+<mainterm weight="a">platinum</mainterm>
+</descriptor>
+<descriptor>
+<mainterm>solvent</mainterm>
+</descriptor>
+<descriptor>
+<mainterm>sulfonic acid derivative</mainterm>
+</descriptor>
+<descriptor>
+<mainterm>thiol</mainterm>
+</descriptor>
+<descriptor>
+<mainterm>unclassified drug</mainterm>
+</descriptor>
+</descriptors>
+<descriptors controlled="y" type="MED">
+<descriptor>
+<mainterm>adsorption</mainterm>
+</descriptor>
+<descriptor>
+<mainterm>article</mainterm>
+</descriptor>
+<descriptor>
+<mainterm>desorption</mainterm>
+</descriptor>
+<descriptor>
+<mainterm>electrode</mainterm>
+</descriptor>
+<descriptor>
+<mainterm>electron transport</mainterm>
+</descriptor>
+<descriptor>
+<mainterm>entropy</mainterm>
+</descriptor>
+<descriptor>
+<mainterm>film</mainterm>
+</descriptor>
+<descriptor>
+<mainterm>oxidation</mainterm>
+</descriptor>
+<descriptor>
+<mainterm>oxidation reduction reaction</mainterm>
+</descriptor>
+<descriptor>
+<mainterm>potentiometry</mainterm>
+</descriptor>
+</descriptors>
+</descriptorgroup>
+<classificationgroup>
+<classifications type="EMCLASS">
+<classification>
+<classification-code>29</classification-code>
+<classification-description>Clinical and Experimental Biochemistry</classification-description>
+</classification>
+</classifications>
+</classificationgroup>
+<chemicalgroup>
+<chemicals source="esbd">
+<chemical>
+<chemical-name>chloroethane</chemical-name>
+<cas-registry-number>75-00-3</cas-registry-number>
+</chemical>
+<chemical>
+<chemical-name>gold</chemical-name>
+<cas-registry-number>7440-57-5</cas-registry-number>
+</chemical>
+<chemical>
+<chemical-name>nitrogen</chemical-name>
+<cas-registry-number>7727-37-9</cas-registry-number>
+</chemical>
+<chemical>
+<chemical-name>platinum</chemical-name>
+<cas-registry-number>7440-06-4</cas-registry-number>
+</chemical>
+</chemicals>
+</chemicalgroup>
+</enhancement>
+</head>
+<tail>
+<bibliography refcount="74"/>
+</tail>
+</bibrecord>
+</item><item>
+<ait:process-info>
+<ait:date-delivered year="2012" month="10" day="25"/>
+<ait:date-sort year="1995" month="06" day="19"/>
+<ait:status type="core" state="backfile_new" stage="S300"/>
+</ait:process-info>
+<bibrecord>
+<item-info>
+<itemidlist>
+<ce:doi>10.1111/j.1526-4610.1995.hed3505273.x</ce:doi>
+<itemid idtype="PUI">25166337</itemid>
+<itemid idtype="MEDL">7775191</itemid>
+</itemidlist>
+<history>
+<date-created year="1995" month="06" day="19"/>
+</history>
+<dbcollection>MEDL</dbcollection>
+</item-info>
+<head>
+<citation-info>
+<citation-type code="ar"/>
+<citation-language xml:lang="eng"/>
+<abstract-language xml:lang="eng"/>
+<author-keywords>
+<author-keyword>headache</author-keyword>
+<author-keyword>prevalence</author-keyword>
+<author-keyword>sickness absence</author-keyword>
+</author-keywords>
+</citation-info>
+<citation-title>
+<titletext xml:lang="eng" original="y">Headache in a Nonclinical Population in Dares Salaam, Tanzania. A Community-Based Study</titletext>
+</citation-title>
+<author-group>
+<author seq="1" type="auth">
+<ce:initials>W.B.P.</ce:initials>
+<ce:indexed-name>Matuja W.B.P.</ce:indexed-name>
+<ce:surname>Matuja</ce:surname>
+</author>
+<author seq="2" type="auth">
+<ce:initials>I.B.H.</ce:initials>
+<ce:indexed-name>Mteza I.B.H.</ce:indexed-name>
+<ce:surname>Mteza</ce:surname>
+</author>
+<author seq="3" type="auth">
+<ce:initials>H.T.</ce:initials>
+<ce:indexed-name>Rwiza H.T.</ce:indexed-name>
+<ce:surname>Rwiza</ce:surname>
+</author>
+<affiliation country="tza">
+<organization>Department of Internal Medicine, Wako Pure Chemical Muhimbili Univ. Coll. of Health Sci.</organization>
+<address-part>P.O. Box 65001</address-part>
+<city-group>Dar es Salaam</city-group>
+</affiliation>
+</author-group>
+<correspondence>
+<person>
+<ce:initials>W.B.P.</ce:initials>
+<ce:indexed-name>Matuja W.B.P.</ce:indexed-name>
+<ce:surname>Matuja</ce:surname>
+</person>
+<affiliation country="tza">
+<organization>Department of Internal Medicine, Muhimbili Medical Centre, Muhimbili Univ. Coll. of Health Sci.</organization>
+<address-part>P.O. Box 65001</address-part>
+<city-group>Dar es Salaam</city-group>
+</affiliation>
+</correspondence>
+<abstracts>
+<abstract original="y">
+<ce:para>
+Headache is a common symptom that constitutes a major health problem to all countries in the world with a variable prevalence from about 20.2% in the African population to about 80% in populations of the civilized world. Community-based studies in African populations are still scanty, and the impact on health facility utilization and sickness absence from work is unknown.
+After a simple random selection, 1540 urban workers and students of higher education completed a standardized self-administered questionnaire on headache. A total of 815 (52%), (620 (51%) men, 195 (60%) women) admitted to having suffered a headache requiring medication or medical consultation in the last year. Of these, 366 (23.7%) had recurrent headache not attributable to systemic disease. Of the total with recurrent headache, there was a significant preponderance of women over men with sex prevalence of 28.9% and 22.4%, respectively (X 2 P = 0.0001). Combined vascular-muscular-type of headache exceeded all types of headache, accounting for 35.8% of cases, followed by migraine accounting for 30.8% of cases. Organic disease was rare, accounting for 8.5% of cases, and psychogenic causes of headache were even rarer at less than 1.2% of cases.Within 2 months of onset of recurrent headaches, over 32% of sufferers had utilized the health facility at their place of work or study. A significant number of cases (175) had an average of 11.3 lost work days per year in comparison to a control group of 154 persons with an average of 5.7 lost work days per year for reasons other than headache (X 2 P = 0.0005).
+In summary, headache is probably rare in the African population as previously reported. However, the clinical manifestation of headache is similar to those observed in the civilized world. Whenever services are available, patients with headache will seek medical consultation. A significant number of days are lost from work due to severe headache in an urban population in Tanzania. This study underscores the need for early correct diagnosis and treatment of headache to reduce the number of work absences due to headache.
+</ce:para>
+</abstract>
+</abstracts>
+<source type="j" country="usa">
+<sourcetitle>Headache</sourcetitle>
+<sourcetitle-abbrev>HEADACHE</sourcetitle-abbrev>
+<issn type="print">00178748</issn>
+<codencode>HEADA</codencode>
+<volisspag>
+<voliss volume="35" issue="5"/>
+<pagerange first="273" last="276"/>
+</volisspag>
+<publicationyear first="1995"/>
+<publicationdate>
+<year>2008</year>
+<month>02</month>
+<day>23</day>
+</publicationdate>
+<publisher>
+<publishername>Blackwell Publishing Inc.</publishername>
+<affiliation country="usa">
+<address-part>350 Main Street</address-part>
+<city>Malden</city>
+<postal-code>MA 02148</postal-code>
+</affiliation>
+</publisher>
+</source>
+<enhancement>
+<descriptorgroup>
+<descriptors controlled="y" type="MEA">
+<descriptor>
+<mainterm weight="a">absenteeism</mainterm>
+</descriptor>
+<descriptor>
+<mainterm>adult</mainterm>
+</descriptor>
+<descriptor>
+<mainterm weight="a">community</mainterm>
+</descriptor>
+<descriptor>
+<mainterm>lung granuloma</mainterm>
+</descriptor>
+<descriptor>
+<mainterm>lung granulomatosis</mainterm>
+</descriptor>
+<descriptor>
+<mainterm>diagnosis</mainterm>
+</descriptor>
+<descriptor>
+<mainterm>drug therapy</mainterm>
+</descriptor>
+<descriptor>
+<mainterm>education</mainterm>
+</descriptor>
+<descriptor>
+<mainterm>female</mainterm>
+</descriptor>
+<descriptor>
+<mainterm weight="a">headache</mainterm>
+</descriptor>
+<descriptor>
+<mainterm>health</mainterm>
+</descriptor>
+<descriptor>
+<mainterm>health care facility</mainterm>
+</descriptor>
+<descriptor>
+<mainterm>health care utilization</mainterm>
+</descriptor>
+<descriptor>
+<mainterm>human</mainterm>
+</descriptor>
+<descriptor>
+<mainterm>job performance</mainterm>
+</descriptor>
+<descriptor>
+<mainterm>major clinical study</mainterm>
+</descriptor>
+<descriptor>
+<mainterm>male</mainterm>
+</descriptor>
+<descriptor>
+<mainterm>migraine</mainterm>
+</descriptor>
+<descriptor>
+<mainterm>patient</mainterm>
+</descriptor>
+<descriptor>
+<mainterm>physical disability</mainterm>
+</descriptor>
+<descriptor>
+<mainterm weight="a">population</mainterm>
+</descriptor>
+<descriptor>
+<mainterm weight="a">prevalence</mainterm>
+</descriptor>
+<descriptor>
+<mainterm>priority journal</mainterm>
+</descriptor>
+<descriptor>
+<mainterm>questionnaire</mainterm>
+</descriptor>
+<descriptor>
+<mainterm>recurrent disease</mainterm>
+</descriptor>
+<descriptor>
+<mainterm>student</mainterm>
+</descriptor>
+<descriptor>
+<mainterm>systemic disease</mainterm>
+</descriptor>
+<descriptor>
+<mainterm weight="a">Tanzania</mainterm>
+</descriptor>
+<descriptor>
+<mainterm>urban area</mainterm>
+</descriptor>
+<descriptor>
+<mainterm>urban population</mainterm>
+</descriptor>
+<descriptor>
+<mainterm>worker</mainterm>
+</descriptor>
+<descriptor>
+<mainterm>workplace</mainterm>
+</descriptor>
+</descriptors>
+<descriptors controlled="y" type="MED">
+<descriptor>
+<mainterm>absenteeism</mainterm>
+</descriptor>
+<descriptor>
+<mainterm>adult</mainterm>
+</descriptor>
+<descriptor>
+<mainterm>article</mainterm>
+</descriptor>
+<descriptor>
+<mainterm>female</mainterm>
+</descriptor>
+<descriptor>
+<mainterm weight="a">headache</mainterm>
+<link>epidemiology</link>
+</descriptor>
+<descriptor>
+<mainterm>health care utilization</mainterm>
+</descriptor>
+<descriptor>
+<mainterm>human</mainterm>
+</descriptor>
+<descriptor>
+<mainterm>job performance</mainterm>
+</descriptor>
+<descriptor>
+<mainterm>major clinical study</mainterm>
+</descriptor>
+<descriptor>
+<mainterm>male</mainterm>
+</descriptor>
+<descriptor>
+<mainterm>physical disability</mainterm>
+</descriptor>
+<descriptor>
+<mainterm>prevalence</mainterm>
+</descriptor>
+<descriptor>
+<mainterm>priority journal</mainterm>
+</descriptor>
+<descriptor>
+<mainterm>recurrent disease</mainterm>
+</descriptor>
+<descriptor>
+<mainterm>tanzania</mainterm>
+</descriptor>
+<descriptor>
+<mainterm>urban area</mainterm>
+</descriptor>
+<descriptor>
+<mainterm>workplace</mainterm>
+</descriptor>
+</descriptors>
+</descriptorgroup>
+<classificationgroup>
+<classifications type="EMCLASS">
+<classification>
+<classification-code>8</classification-code>
+<classification-description>Neurology and Neurosurgery</classification-description>
+</classification>
+<classification>
+<classification-code>17</classification-code>
+<classification-description>Public Health, Social Medicine and Epidemiology</classification-description>
+</classification>
+</classifications>
+</classificationgroup>
+<manufacturergroup>
+<manufacturers type="MNF">
+<manufacturer>Wako Japan</manufacturer>
+<manufacturer>Sigma Aldrich</manufacturer>
+</manufacturers>
+<manufacturers type="MNV">
+<manufacturer>Diasorin</manufacturer>
+</manufacturers>
+</manufacturergroup>
+<tradenamegroup>
+<tradenames type="TNM">
+<trademanuitem>
+<tradename>sandimmune</tradename>
+<manufacturer country="che">Novartis</manufacturer>
+</trademanuitem>
+</tradenames>
+<tradenames type="TNV">
+<trademanuitem>
+<tradename>some device</tradename>
+<manufacturer country="che">Novartis</manufacturer>
+</trademanuitem>
+<trademanuitem>
+<tradename>other device</tradename>
+<manufacturer>Novartis</manufacturer>
+</trademanuitem>
+</tradenames>
+</tradenamegroup>
+</enhancement>
+</head>
+</bibrecord>
+</item></bibdataset>
